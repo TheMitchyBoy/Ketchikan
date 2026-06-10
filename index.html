@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover Ketchikan Gateway Borough — Alaska's First City, the Salmon Capital of the World. Explore totem poles, Misty Fjords, Creek Street, and Tlingit heritage.">
+  <title>Ketchikan Gateway Borough | Alaska's First City</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="rain-container" aria-hidden="true"></div>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2L35 12V28L20 38L5 28V12L20 2Z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="20" cy="18" r="6" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M14 30C14 30 17 26 20 26C23 26 26 30 26 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>Ketchikan Gateway</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#explore">Explore</a></li>
+        <li><a href="#culture">Culture</a></li>
+        <li><a href="#wildlife">Wildlife</a></li>
+        <li><a href="#visit">Plan a Visit</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-mist"></div>
+      <div class="hero-mountains"></div>
+      <div class="hero-water"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Ketchikan Gateway Borough, Alaska</p>
+      <h1 class="hero-title">
+        <span class="title-line">Where Rainforest</span>
+        <span class="title-line accent">Meets the Sea</span>
+      </h1>
+      <p class="hero-subtitle">Alaska's First City &bull; Salmon Capital of the World &bull; Home to the world's largest collection of standing totem poles</p>
+      <div class="hero-actions">
+        <a href="#explore" class="btn btn-primary">Explore the Borough</a>
+        <button class="btn btn-ghost" id="rain-toggle" aria-pressed="true">
+          <span class="rain-icon">&#x1F327;</span> Rain: On
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-pill">
+          <span class="stat-value" data-target="137">0</span>
+          <span class="stat-label">Inches of Rain/Year</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-value" data-target="14000">0</span>
+          <span class="stat-label">Residents</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-value" data-target="10000">0</span>
+          <span class="stat-label">Years of Native Heritage</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll to discover</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </header>
+
+  <main>
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">The Borough</span>
+        <h2>Gateway to Southeast Alaska</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>The <strong>Ketchikan Gateway Borough</strong> encompasses Revillagigedo Island and surrounding areas at the southern tip of Alaska's Inside Passage. Founded as a salmon cannery site in 1885, Ketchikan has grown into a vibrant community where Tlingit, Haida, and Tsimshian traditions thrive alongside world-class fishing, arts, and adventure tourism.</p>
+          <p>Stretching 31 miles long but never more than 10 blocks wide, this island city hugs dramatic bluffs along the Tongass National Forest — the largest temperate rainforest in the world. Accessible only by air or sea, Ketchikan sits approximately 679 air miles north of Seattle and 90 miles north of Prince Rupert, British Columbia.</p>
+          <p>Downtown Ketchikan is designated a <em>National Historic Landmark District</em>, preserving the rich history of Alaska's southeastern frontier.</p>
+        </div>
+        <div class="about-facts reveal">
+          <div class="fact-card" data-tilt>
+            <div class="fact-icon">&#x1F3D4;</div>
+            <h3>Revillagigedo Island</h3>
+            <p>Home to the City of Ketchikan and the City of Saxman, connected by road and water.</p>
+          </div>
+          <div class="fact-card" data-tilt>
+            <div class="fact-icon">&#x1F41F;</div>
+            <h3>Salmon Capital</h3>
+            <p>Five species of Pacific salmon spawn in Ketchikan Creek and surrounding waters.</p>
+          </div>
+          <div class="fact-card" data-tilt>
+            <div class="fact-icon">&#x1F6A2;</div>
+            <h3>Cruise Gateway</h3>
+            <p>One of Alaska's most popular cruise ship ports, welcoming over a million visitors annually.</p>
+          </div>
+          <div class="fact-card" data-tilt>
+            <div class="fact-icon">&#x1F332;</div>
+            <h3>Tongass Forest</h3>
+            <p>Headquarters of the Tongass National Forest, spanning 16.7 million acres.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section explore" id="explore">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Discover</span>
+        <h2>Explore the Borough</h2>
+        <p class="section-desc">Click a landmark on the map or select a destination below</p>
+      </div>
+
+      <div class="explore-layout">
+        <div class="borough-map reveal" id="borough-map">
+          <svg viewBox="0 0 400 500" class="map-svg" role="img" aria-label="Interactive map of Ketchikan Gateway Borough landmarks">
+            <defs>
+              <linearGradient id="waterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1a4a6e"/>
+                <stop offset="100%" stop-color="#0d2d44"/>
+              </linearGradient>
+              <linearGradient id="landGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#2d5a3d"/>
+                <stop offset="100%" stop-color="#1a3d2a"/>
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <rect width="400" height="500" fill="url(#waterGrad)"/>
+            <path class="island" d="M80,80 Q120,60 180,70 Q250,65 320,90 Q350,120 340,200 Q345,280 330,350 Q300,420 250,440 Q180,460 120,430 Q70,400 60,320 Q50,240 55,160 Q60,100 80,80Z" fill="url(#landGrad)" stroke="#3d7a52" stroke-width="2"/>
+            <text x="200" y="250" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="11" font-family="Outfit">Revillagigedo Island</text>
+
+            <g class="map-marker" data-id="creek-street" tabindex="0" role="button" aria-label="Creek Street">
+              <circle cx="175" cy="280" r="12" class="marker-pulse"/>
+              <circle cx="175" cy="280" r="6" fill="#e8a87c"/>
+              <text x="175" y="305" text-anchor="middle" fill="#e8d5b7" font-size="9">Creek Street</text>
+            </g>
+            <g class="map-marker" data-id="totem-bight" tabindex="0" role="button" aria-label="Totem Bight State Park">
+              <circle cx="280" cy="150" r="12" class="marker-pulse"/>
+              <circle cx="280" cy="150" r="6" fill="#e8a87c"/>
+              <text x="280" y="175" text-anchor="middle" fill="#e8d5b7" font-size="9">Totem Bight</text>
+            </g>
+            <g class="map-marker" data-id="misty-fjords" tabindex="0" role="button" aria-label="Misty Fjords National Monument">
+              <circle cx="100" cy="120" r="12" class="marker-pulse"/>
+              <circle cx="100" cy="120" r="6" fill="#e8a87c"/>
+              <text x="100" y="145" text-anchor="middle" fill="#e8d5b7" font-size="9">Misty Fjords</text>
+            </g>
+            <g class="map-marker" data-id="saxman" tabindex="0" role="button" aria-label="Saxman Totem Park">
+              <circle cx="220" cy="380" r="12" class="marker-pulse"/>
+              <circle cx="220" cy="380" r="6" fill="#e8a87c"/>
+              <text x="220" y="405" text-anchor="middle" fill="#e8d5b7" font-size="9">Saxman</text>
+            </g>
+            <g class="map-marker" data-id="downtown" tabindex="0" role="button" aria-label="Downtown Ketchikan">
+              <circle cx="200" cy="260" r="12" class="marker-pulse"/>
+              <circle cx="200" cy="260" r="6" fill="#c45c3a"/>
+              <text x="200" y="245" text-anchor="middle" fill="#e8d5b7" font-size="9">Downtown</text>
+            </g>
+            <g class="map-marker" data-id="herring-cove" tabindex="0" role="button" aria-label="Herring Cove">
+              <circle cx="310" cy="320" r="12" class="marker-pulse"/>
+              <circle cx="310" cy="320" r="6" fill="#e8a87c"/>
+              <text x="310" y="345" text-anchor="middle" fill="#e8d5b7" font-size="9">Herring Cove</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="attraction-panel reveal" id="attraction-panel">
+          <div class="attraction-tabs" role="tablist">
+            <button class="tab-btn active" role="tab" data-id="creek-street" aria-selected="true">Creek Street</button>
+            <button class="tab-btn" role="tab" data-id="totem-bight">Totem Bight</button>
+            <button class="tab-btn" role="tab" data-id="misty-fjords">Misty Fjords</button>
+            <button class="tab-btn" role="tab" data-id="saxman">Saxman</button>
+            <button class="tab-btn" role="tab" data-id="downtown">Downtown</button>
+            <button class="tab-btn" role="tab" data-id="herring-cove">Herring Cove</button>
+          </div>
+          <div class="attraction-content" id="attraction-content">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section culture" id="culture">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Heritage</span>
+        <h2>Living Culture &amp; Totem Traditions</h2>
+        <p class="section-desc">The Tlingit name <em>Kichx̱áan</em> means "spread wings of a prostrate eagle" — a reference to the shape of the creek flowing through town.</p>
+      </div>
+
+      <div class="totem-gallery">
+        <div class="totem-card reveal" data-totem="0">
+          <div class="totem-visual totem-1"></div>
+          <div class="totem-info">
+            <h3>Chief Kyan Pole</h3>
+            <p>Located in Whale Park, this iconic totem is featured in most U.S. passports. Carved to honor Chief Kyan of the Tongass Tlingit.</p>
+            <button class="totem-learn-btn">Learn More</button>
+          </div>
+        </div>
+        <div class="totem-card reveal" data-totem="1">
+          <div class="totem-visual totem-2"></div>
+          <div class="totem-info">
+            <h3>Totem Heritage Center</h3>
+            <p>Preserves 19th-century poles rescued from abandoned village sites. A living museum of Tlingit and Haida carving traditions.</p>
+            <button class="totem-learn-btn">Learn More</button>
+          </div>
+        </div>
+        <div class="totem-card reveal" data-totem="2">
+          <div class="totem-visual totem-3"></div>
+          <div class="totem-info">
+            <h3>Saxman Totem Park</h3>
+            <p>Home to 25 totem poles, many recarvings of older poles created during the Civilian Conservation Corps era.</p>
+            <button class="totem-learn-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline reveal" id="timeline">
+        <h3 class="timeline-title">A Walk Through History</h3>
+        <div class="timeline-track">
+          <div class="timeline-item" data-year="10000">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">10,000+ BCE</span>
+              <h4>First Peoples</h4>
+              <p>Tlingit, Haida, and Tsimshian peoples establish fishing camps along Ketchikan Creek.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-year="1885">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">1885</span>
+              <h4>Town Founded</h4>
+              <p>Mike Martin establishes Clark &amp; Martin saltery, founding the salmon canning industry.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-year="1900">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">1900</span>
+              <h4>Gold Rush Era</h4>
+              <p>Ketchikan becomes a supply hub for miners heading to the Klondike and other strikes.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-year="1954">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">1954</span>
+              <h4>Creek Street Transforms</h4>
+              <p>The famed red-light district closes; Creek Street becomes an arts and shopping destination.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-year="1978">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">1978</span>
+              <h4>Misty Fjords Protected</h4>
+              <p>Misty Fiords National Monument established — 3,570 square miles of wilderness.</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-year="2024">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">Today</span>
+              <h4>Living Community</h4>
+              <p>A thriving arts scene, world-class fishing, and warm island hospitality welcome visitors year-round.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wildlife" id="wildlife">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Nature</span>
+        <h2>Wildlife of the Rainforest Coast</h2>
+        <p class="section-desc">Select a species to learn where and when you might spot them</p>
+      </div>
+
+      <div class="wildlife-explorer reveal">
+        <div class="wildlife-selector">
+          <button class="wildlife-btn active" data-species="bald-eagle">
+            <span class="wildlife-emoji">&#x1F985;</span>
+            <span>Bald Eagle</span>
+          </button>
+          <button class="wildlife-btn" data-species="humpback-whale">
+            <span class="wildlife-emoji">&#x1F40B;</span>
+            <span>Humpback Whale</span>
+          </button>
+          <button class="wildlife-btn" data-species="black-bear">
+            <span class="wildlife-emoji">&#x1F43B;</span>
+            <span>Black Bear</span>
+          </button>
+          <button class="wildlife-btn" data-species="salmon">
+            <span class="wildlife-emoji">&#x1F41F;</span>
+            <span>Salmon</span>
+          </button>
+          <button class="wildlife-btn" data-species="sea-otter">
+            <span class="wildlife-emoji">&#x1F9A6;</span>
+            <span>Sea Otter</span>
+          </button>
+          <button class="wildlife-btn" data-species="orca">
+            <span class="wildlife-emoji">&#x1F40B;</span>
+            <span>Orca</span>
+          </button>
+        </div>
+        <div class="wildlife-detail" id="wildlife-detail">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section weather" id="weather">
+    <div class="container">
+      <div class="weather-card reveal">
+        <div class="weather-visual">
+          <div class="weather-scene" id="weather-scene">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+          </div>
+        </div>
+        <div class="weather-info">
+          <h2>Ketchikan Climate</h2>
+          <p class="weather-tagline">"Liquid sunshine" — locals embrace the rain that nourishes the rainforest</p>
+          <div class="weather-stats">
+            <div class="weather-stat">
+              <span class="weather-stat-value" id="temp-display">52°F</span>
+              <span class="weather-stat-label">Typical Summer High</span>
+            </div>
+            <div class="weather-stat">
+              <span class="weather-stat-value">153</span>
+              <span class="weather-stat-label">Rainy Days/Year</span>
+            </div>
+            <div class="weather-stat">
+              <span class="weather-stat-value">37°F</span>
+              <span class="weather-stat-label">Typical Winter Low</span>
+            </div>
+          </div>
+          <div class="season-selector">
+            <button class="season-btn active" data-season="summer">Summer</button>
+            <button class="season-btn" data-season="fall">Fall</button>
+            <button class="season-btn" data-season="winter">Winter</button>
+            <button class="season-btn" data-season="spring">Spring</button>
+          </div>
+          <p class="season-desc" id="season-desc">Long daylight hours (up to 17 hours), lush greenery, and peak salmon runs make summer the most popular visiting season.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section visit" id="visit">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Plan Your Trip</span>
+        <h2>Visit Ketchikan Gateway Borough</h2>
+      </div>
+
+      <div class="visit-grid">
+        <div class="visit-card reveal">
+          <div class="visit-icon">&#x2708;</div>
+          <h3>Getting Here</h3>
+          <p>Fly into Ketchikan International Airport (KTN) with daily jet service from Seattle, Anchorage, and Juneau. The Alaska Marine Highway ferry system also connects Ketchikan to the Pacific Northwest.</p>
+        </div>
+        <div class="visit-card reveal">
+          <div class="visit-icon">&#x1F6A2;</div>
+          <h3>Cruise Port</h3>
+          <p>Four cruise ship berths welcome major cruise lines from May through September. Berth 2 houses the Visitor Information Center — your first stop for maps and tour bookings.</p>
+        </div>
+        <div class="visit-card reveal">
+          <div class="visit-icon">&#x1F3A8;</div>
+          <h3>Arts &amp; Culture</h3>
+          <p>Explore galleries along Creek Street, catch a performance at the Saxman Community Hall, or visit the Southeast Alaska Discovery Center for interactive exhibits.</p>
+        </div>
+        <div class="visit-card reveal">
+          <div class="visit-icon">&#x1F3A3;</div>
+          <h3>Outdoor Adventures</h3>
+          <p>World-class sport fishing, kayaking through Misty Fjords, zip-lining through the canopy, and hiking trails for every skill level await outdoor enthusiasts.</p>
+        </div>
+      </div>
+
+      <div class="quiz-section reveal" id="quiz-section">
+        <h3>How Well Do You Know Ketchikan?</h3>
+        <div class="quiz-container" id="quiz-container">
+          <div class="quiz-question" id="quiz-question">
+            <p class="quiz-text" id="quiz-text"></p>
+            <div class="quiz-options" id="quiz-options"></div>
+          </div>
+          <div class="quiz-result hidden" id="quiz-result">
+            <p class="quiz-score" id="quiz-score"></p>
+            <p class="quiz-message" id="quiz-message"></p>
+            <button class="btn btn-primary" id="quiz-restart">Try Again</button>
+          </div>
+          <div class="quiz-progress">
+            <span id="quiz-counter">Question 1 of 5</span>
+            <div class="quiz-bar"><div class="quiz-bar-fill" id="quiz-bar-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Ketchikan Gateway Borough</h3>
+          <p>334 Front Street, Ketchikan, AK 99901</p>
+          <p>Phone: (907) 225-3111</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="https://www.kgbak.us/" target="_blank" rel="noopener">Borough Official Site</a></li>
+            <li><a href="https://www.visitktn.com/" target="_blank" rel="noopener">Visit Ketchikan</a></li>
+            <li><a href="https://www.ketchikan.gov/" target="_blank" rel="noopener">City of Ketchikan</a></li>
+            <li><a href="https://www.travelalaska.com/destinations/cities-towns/ketchikan" target="_blank" rel="noopener">Travel Alaska</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay Connected</h4>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Your email address" required aria-label="Email address">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+          <p class="newsletter-msg hidden" id="newsletter-msg">Thank you for subscribing!</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Ketchikan Gateway Borough. This is an informational community website.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal hidden" id="totem-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close dialog">&times;</button>
+      <h3 id="modal-title"></h3>
+      <p id="modal-body"></p>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast" role="status"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
