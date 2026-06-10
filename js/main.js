@@ -4,7 +4,7 @@ const attractions = {
   'creek-street': {
     title: 'Creek Street',
     tag: 'Historic Boardwalk',
-    image: 'linear-gradient(135deg, #8b5e3c 0%, #c45c3a 40%, #2d5a3d 100%)',
+    image: 'linear-gradient(135deg, #042f2e 0%, #134e4a 40%, #2dd4bf 100%)',
     description: 'A picturesque boardwalk built on stilts over Ketchikan Creek, Creek Street was once the town\'s famed red-light district until 1954. Today it\'s a photographer\'s delight — home to art galleries, gift shops, bookstores, and restaurants perched above the salmon-filled creek.',
     highlights: [
       'Dolly\'s House Museum — preserved brothel from the gold rush era',
@@ -16,7 +16,7 @@ const attractions = {
   'totem-bight': {
     title: 'Totem Bight State Historical Park',
     tag: 'State Park',
-    image: 'linear-gradient(135deg, #1a3d2a 0%, #8b5e3c 50%, #c45c3a 100%)',
+    image: 'linear-gradient(135deg, #0c4a6e 0%, #164e63 50%, #22d3ee 100%)',
     description: 'Set against the backdrop of the Tongass National Forest, this 33-acre park features a collection of restored totem poles and a replica Tlingit clan house. Many poles are recarvings of older poles created during the Civilian Conservation Corps era in the 1930s.',
     highlights: [
       '14 totem poles with interpretive signage',
@@ -28,7 +28,7 @@ const attractions = {
   'misty-fjords': {
     title: 'Misty Fjords National Monument',
     tag: 'Wilderness',
-    image: 'linear-gradient(135deg, #0d2d44 0%, #1a4a6e 50%, #2d5a3d 100%)',
+    image: 'linear-gradient(135deg, #030712 0%, #0c4a6e 50%, #2dd4bf 100%)',
     description: 'A breathtaking 3,570-square-mile wilderness of sea cliffs, steep fjords, and rock walls jutting 3,000 feet straight from the ocean. Accessible by floatplane, tour boat, or kayak, Misty Fjords is one of Alaska\'s most spectacular natural wonders.',
     highlights: [
       'New Eddystone Rock — a volcanic spire rising from the sea',
@@ -40,7 +40,7 @@ const attractions = {
   'saxman': {
     title: 'Saxman Totem Park',
     tag: 'Native Heritage',
-    image: 'linear-gradient(135deg, #c45c3a 0%, #8b5e3c 50%, #1a3d2a 100%)',
+    image: 'linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #a78bfa 100%)',
     description: 'Located in the City of Saxman, just south of Ketchikan, this park houses 25 totem poles — one of the largest collections in Alaska. The Saxman community maintains strong Tlingit traditions, with regular carving demonstrations and cultural performances.',
     highlights: [
       '25 standing totem poles in a traditional village setting',
@@ -52,7 +52,7 @@ const attractions = {
   'downtown': {
     title: 'Downtown Ketchikan',
     tag: 'National Historic Landmark',
-    image: 'linear-gradient(135deg, #1a4a6e 0%, #2d5a3d 50%, #8b5e3c 100%)',
+    image: 'linear-gradient(135deg, #042f2e 0%, #0c4a6e 50%, #22d3ee 100%)',
     description: 'Downtown Ketchikan is a National Historic Landmark District centered on Mission Street and the waterfront. Two large harbors, four cruise ship berths, and a vibrant commercial district make this the heart of the borough.',
     highlights: [
       'Chief Kyan Totem Pole in Whale Park (featured in U.S. passports)',
@@ -64,7 +64,7 @@ const attractions = {
   'herring-cove': {
     title: 'Herring Cove',
     tag: 'Wildlife Viewing',
-    image: 'linear-gradient(135deg, #2a6a94 0%, #2d5a3d 50%, #1a3d2a 100%)',
+    image: 'linear-gradient(135deg, #064e3b 0%, #134e4a 50%, #2dd4bf 100%)',
     description: 'A popular wildlife viewing area just a short drive from downtown, Herring Cove offers some of the best bear and salmon viewing in Southeast Alaska. Black bears frequently fish for salmon in the creek during summer months.',
     highlights: [
       'Black bear viewing during salmon runs (July–September)',
@@ -161,10 +161,10 @@ const seasons = {
 };
 
 const seasonScenes = {
-  summer: 'linear-gradient(180deg, #5a9abd 0%, #3a7a9d 40%, #2a6a94 100%)',
-  fall: 'linear-gradient(180deg, #8b6e4a 0%, #5a4a3a 40%, #3a3a2a 100%)',
-  winter: 'linear-gradient(180deg, #6a8a9d 0%, #4a6a7d 40%, #2a4a5d 100%)',
-  spring: 'linear-gradient(180deg, #6a9a8d 0%, #4a7a6d 40%, #2a5a4d 100%)'
+  summer: 'linear-gradient(180deg, #0c4a6e 0%, #042f2e 60%, #134e4a 100%)',
+  fall: 'linear-gradient(180deg, #451a03 0%, #292524 60%, #1c1917 100%)',
+  winter: 'linear-gradient(180deg, #1e293b 0%, #0f172a 60%, #030712 100%)',
+  spring: 'linear-gradient(180deg, #064e3b 0%, #042f2e 60%, #134e4a 100%)'
 };
 
 const quizQuestions = [
@@ -219,9 +219,7 @@ function createRain() {
 document.getElementById('rain-toggle').addEventListener('click', function () {
   rainActive = !rainActive;
   this.setAttribute('aria-pressed', rainActive);
-  this.innerHTML = rainActive
-    ? '<span class="rain-icon">&#x1F327;</span> Rain: On'
-    : '<span class="rain-icon">&#x1F327;</span> Rain: Off';
+  this.querySelector('span').textContent = rainActive ? 'Rain On' : 'Rain Off';
   createRain();
 });
 
@@ -260,16 +258,35 @@ const observerNav = new IntersectionObserver(entries => {
 
 sections.forEach(s => observerNav.observe(s));
 
+/* Scroll Progress */
+const scrollProgress = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  scrollProgress.style.width = pct + '%';
+}, { passive: true });
+
+/* Cursor Glow */
+const cursorGlow = document.getElementById('cursor-glow');
+if (window.matchMedia('(pointer: fine)').matches) {
+  document.addEventListener('mousemove', e => {
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top = e.clientY + 'px';
+  }, { passive: true });
+}
+
 /* Animated Counters */
 function animateCounter(el) {
   const target = parseInt(el.dataset.target, 10);
-  const duration = 2000;
+  const suffix = el.dataset.suffix || '';
+  const format = el.dataset.format || 'comma';
+  const duration = 2200;
   const start = performance.now();
 
   function update(now) {
     const progress = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(eased * target).toLocaleString();
+    const eased = 1 - Math.pow(1 - progress, 4);
+    const val = Math.floor(eased * target);
+    el.textContent = format === 'raw' ? val + suffix : val.toLocaleString() + suffix;
     if (progress < 1) requestAnimationFrame(update);
   }
 
@@ -297,7 +314,10 @@ const revealObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 6) * 0.08}s`;
+  revealObserver.observe(el);
+});
 
 /* Timeline Animation */
 const timelineObserver = new IntersectionObserver(entries => {

@@ -7,177 +7,233 @@
   <title>Ketchikan Gateway Borough | Alaska's First City</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <div class="ambient" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-overlay"></div>
+    <div class="noise"></div>
+  </div>
+
   <div id="rain-container" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
-        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 2L35 12V28L20 38L5 28V12L20 2Z" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="20" cy="18" r="6" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M14 30C14 30 17 26 20 26C23 26 26 30 26 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <span>Ketchikan Gateway</span>
+        <span class="logo-mark">KG</span>
+        <span class="logo-text">Ketchikan<em>Gateway</em></span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
+        <span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#explore">Explore</a></li>
-        <li><a href="#culture">Culture</a></li>
-        <li><a href="#wildlife">Wildlife</a></li>
-        <li><a href="#visit">Plan a Visit</a></li>
+        <li><a href="#about"><span class="nav-num">01</span> About</a></li>
+        <li><a href="#explore"><span class="nav-num">02</span> Explore</a></li>
+        <li><a href="#culture"><span class="nav-num">03</span> Culture</a></li>
+        <li><a href="#wildlife"><span class="nav-num">04</span> Wildlife</a></li>
+        <li><a href="#visit"><span class="nav-num">05</span> Visit</a></li>
       </ul>
+      <a href="#explore" class="nav-cta">Start Exploring</a>
     </div>
   </nav>
 
   <header class="hero" id="hero">
-    <div class="hero-bg">
-      <div class="hero-mist"></div>
-      <div class="hero-mountains"></div>
-      <div class="hero-water"></div>
-    </div>
     <div class="hero-content">
-      <p class="hero-eyebrow">Ketchikan Gateway Borough, Alaska</p>
-      <h1 class="hero-title">
-        <span class="title-line">Where Rainforest</span>
-        <span class="title-line accent">Meets the Sea</span>
+      <div class="hero-badge reveal">
+        <span class="pulse-dot"></span>
+        Revillagigedo Island &middot; 55.34&deg;N
+      </div>
+      <h1 class="hero-title reveal">
+        <span class="title-row">Where</span>
+        <span class="title-row gradient-text">Rainforest</span>
+        <span class="title-row">Meets the <em>Sea</em></span>
       </h1>
-      <p class="hero-subtitle">Alaska's First City &bull; Salmon Capital of the World &bull; Home to the world's largest collection of standing totem poles</p>
-      <div class="hero-actions">
-        <a href="#explore" class="btn btn-primary">Explore the Borough</a>
-        <button class="btn btn-ghost" id="rain-toggle" aria-pressed="true">
-          <span class="rain-icon">&#x1F327;</span> Rain: On
+      <p class="hero-subtitle reveal">Alaska's First City. Salmon Capital of the World. Home to the planet's largest collection of standing totem poles.</p>
+      <div class="hero-actions reveal">
+        <a href="#explore" class="btn btn-primary">
+          <span>Explore the Borough</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <button class="btn btn-glass" id="rain-toggle" aria-pressed="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2v2M8 1v2M12 3v2M2 7h12M3 11h2M7 10h2M11 12h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <span>Rain On</span>
         </button>
       </div>
-      <div class="hero-stats">
-        <div class="stat-pill">
-          <span class="stat-value" data-target="137">0</span>
-          <span class="stat-label">Inches of Rain/Year</span>
+      <div class="hero-stats reveal">
+        <div class="stat-card">
+          <span class="stat-value" data-target="137" data-suffix='"' data-format="raw">0</span>
+          <span class="stat-label">Annual Rainfall</span>
         </div>
-        <div class="stat-pill">
-          <span class="stat-value" data-target="14000">0</span>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <span class="stat-value" data-target="14000" data-suffix="" data-format="comma">0</span>
           <span class="stat-label">Residents</span>
         </div>
-        <div class="stat-pill">
-          <span class="stat-value" data-target="10000">0</span>
-          <span class="stat-label">Years of Native Heritage</span>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <span class="stat-value" data-target="10000" data-suffix="+" data-format="comma">0</span>
+          <span class="stat-label">Years of Heritage</span>
         </div>
       </div>
     </div>
-    <div class="scroll-indicator">
-      <span>Scroll to discover</span>
-      <div class="scroll-arrow"></div>
+    <div class="hero-visual reveal">
+      <div class="hero-card-stack">
+        <div class="hero-float-card card-a">
+          <span class="float-label">Creek Street</span>
+          <span class="float-value">Est. 1900</span>
+        </div>
+        <div class="hero-float-card card-b">
+          <span class="float-label">Misty Fjords</span>
+          <span class="float-value">3,570 mi&sup2;</span>
+        </div>
+        <div class="hero-float-card card-c">
+          <span class="float-label">Totem Poles</span>
+          <span class="float-value">World's Largest</span>
+        </div>
+        <div class="hero-ring"></div>
+      </div>
     </div>
   </header>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Salmon Capital</span><span class="marquee-dot"></span>
+      <span>Inside Passage</span><span class="marquee-dot"></span>
+      <span>Tlingit Heritage</span><span class="marquee-dot"></span>
+      <span>Tongass Rainforest</span><span class="marquee-dot"></span>
+      <span>Misty Fjords</span><span class="marquee-dot"></span>
+      <span>Creek Street</span><span class="marquee-dot"></span>
+      <span>Salmon Capital</span><span class="marquee-dot"></span>
+      <span>Inside Passage</span><span class="marquee-dot"></span>
+      <span>Tlingit Heritage</span><span class="marquee-dot"></span>
+      <span>Tongass Rainforest</span><span class="marquee-dot"></span>
+      <span>Misty Fjords</span><span class="marquee-dot"></span>
+      <span>Creek Street</span><span class="marquee-dot"></span>
+    </div>
+  </div>
 
   <main>
   <section class="section about" id="about">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">The Borough</span>
-        <h2>Gateway to Southeast Alaska</h2>
+      <div class="section-header reveal">
+        <span class="section-num">01</span>
+        <div>
+          <span class="section-tag">The Borough</span>
+          <h2>Gateway to<br><span class="gradient-text">Southeast Alaska</span></h2>
+        </div>
       </div>
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p>The <strong>Ketchikan Gateway Borough</strong> encompasses Revillagigedo Island and surrounding areas at the southern tip of Alaska's Inside Passage. Founded as a salmon cannery site in 1885, Ketchikan has grown into a vibrant community where Tlingit, Haida, and Tsimshian traditions thrive alongside world-class fishing, arts, and adventure tourism.</p>
-          <p>Stretching 31 miles long but never more than 10 blocks wide, this island city hugs dramatic bluffs along the Tongass National Forest — the largest temperate rainforest in the world. Accessible only by air or sea, Ketchikan sits approximately 679 air miles north of Seattle and 90 miles north of Prince Rupert, British Columbia.</p>
-          <p>Downtown Ketchikan is designated a <em>National Historic Landmark District</em>, preserving the rich history of Alaska's southeastern frontier.</p>
-        </div>
-        <div class="about-facts reveal">
-          <div class="fact-card" data-tilt>
-            <div class="fact-icon">&#x1F3D4;</div>
-            <h3>Revillagigedo Island</h3>
-            <p>Home to the City of Ketchikan and the City of Saxman, connected by road and water.</p>
+
+      <div class="bento-grid reveal">
+        <article class="bento bento-feature">
+          <p class="bento-eyebrow">Since 1885</p>
+          <p>The <strong>Ketchikan Gateway Borough</strong> spans Revillagigedo Island at the southern tip of Alaska's Inside Passage — 31 miles long, never more than 10 blocks wide, wrapped in the world's largest temperate rainforest.</p>
+          <p>Founded as a salmon cannery, Ketchikan is where Tlingit, Haida, and Tsimshian traditions meet world-class fishing, arts, and adventure. Downtown is a <em>National Historic Landmark District</em>.</p>
+        </article>
+        <article class="bento bento-stat" data-tilt>
+          <div class="bento-icon">&#x1F3D4;</div>
+          <h3>Revillagigedo</h3>
+          <p>Island home to Ketchikan &amp; Saxman</p>
+        </article>
+        <article class="bento bento-stat" data-tilt>
+          <div class="bento-icon">&#x1F41F;</div>
+          <h3>5 Salmon Species</h3>
+          <p>Spawn in Ketchikan Creek yearly</p>
+        </article>
+        <article class="bento bento-stat bento-accent" data-tilt>
+          <div class="bento-icon">&#x1F6A2;</div>
+          <h3>1M+ Visitors</h3>
+          <p>Alaska's top cruise gateway</p>
+        </article>
+        <article class="bento bento-stat" data-tilt>
+          <div class="bento-icon">&#x1F332;</div>
+          <h3>16.7M Acres</h3>
+          <p>Tongass National Forest HQ</p>
+        </article>
+        <article class="bento bento-map-mini">
+          <span class="bento-eyebrow">Location</span>
+          <p class="bento-location">679 air miles north of Seattle &middot; 90 miles north of Prince Rupert, BC &middot; Accessible by air or sea only</p>
+          <div class="coord-row">
+            <span>55.342&deg; N</span>
+            <span>131.646&deg; W</span>
           </div>
-          <div class="fact-card" data-tilt>
-            <div class="fact-icon">&#x1F41F;</div>
-            <h3>Salmon Capital</h3>
-            <p>Five species of Pacific salmon spawn in Ketchikan Creek and surrounding waters.</p>
-          </div>
-          <div class="fact-card" data-tilt>
-            <div class="fact-icon">&#x1F6A2;</div>
-            <h3>Cruise Gateway</h3>
-            <p>One of Alaska's most popular cruise ship ports, welcoming over a million visitors annually.</p>
-          </div>
-          <div class="fact-card" data-tilt>
-            <div class="fact-icon">&#x1F332;</div>
-            <h3>Tongass Forest</h3>
-            <p>Headquarters of the Tongass National Forest, spanning 16.7 million acres.</p>
-          </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
   <section class="section explore" id="explore">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Discover</span>
-        <h2>Explore the Borough</h2>
-        <p class="section-desc">Click a landmark on the map or select a destination below</p>
+      <div class="section-header reveal">
+        <span class="section-num">02</span>
+        <div>
+          <span class="section-tag">Discover</span>
+          <h2>Explore the<br><span class="gradient-text">Borough</span></h2>
+          <p class="section-desc">Select a landmark on the map or pick a destination</p>
+        </div>
       </div>
 
       <div class="explore-layout">
-        <div class="borough-map reveal" id="borough-map">
+        <div class="borough-map glass-panel reveal" id="borough-map">
+          <div class="panel-label">Interactive Map</div>
           <svg viewBox="0 0 400 500" class="map-svg" role="img" aria-label="Interactive map of Ketchikan Gateway Borough landmarks">
             <defs>
               <linearGradient id="waterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#1a4a6e"/>
-                <stop offset="100%" stop-color="#0d2d44"/>
+                <stop offset="0%" stop-color="#0c4a6e"/>
+                <stop offset="100%" stop-color="#042f2e"/>
               </linearGradient>
               <linearGradient id="landGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#2d5a3d"/>
-                <stop offset="100%" stop-color="#1a3d2a"/>
+                <stop offset="0%" stop-color="#134e4a"/>
+                <stop offset="100%" stop-color="#064e3b"/>
               </linearGradient>
               <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feGaussianBlur stdDeviation="4" result="blur"/>
                 <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
             </defs>
-            <rect width="400" height="500" fill="url(#waterGrad)"/>
-            <path class="island" d="M80,80 Q120,60 180,70 Q250,65 320,90 Q350,120 340,200 Q345,280 330,350 Q300,420 250,440 Q180,460 120,430 Q70,400 60,320 Q50,240 55,160 Q60,100 80,80Z" fill="url(#landGrad)" stroke="#3d7a52" stroke-width="2"/>
-            <text x="200" y="250" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="11" font-family="Outfit">Revillagigedo Island</text>
+            <rect width="400" height="500" fill="url(#waterGrad)" rx="8"/>
+            <path class="island" d="M80,80 Q120,60 180,70 Q250,65 320,90 Q350,120 340,200 Q345,280 330,350 Q300,420 250,440 Q180,460 120,430 Q70,400 60,320 Q50,240 55,160 Q60,100 80,80Z" fill="url(#landGrad)" stroke="rgba(45,212,191,0.4)" stroke-width="1.5"/>
+            <text x="200" y="250" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="10" font-family="DM Sans">Revillagigedo Island</text>
 
             <g class="map-marker" data-id="creek-street" tabindex="0" role="button" aria-label="Creek Street">
-              <circle cx="175" cy="280" r="12" class="marker-pulse"/>
-              <circle cx="175" cy="280" r="6" fill="#e8a87c"/>
-              <text x="175" y="305" text-anchor="middle" fill="#e8d5b7" font-size="9">Creek Street</text>
+              <circle cx="175" cy="280" r="14" class="marker-pulse"/>
+              <circle cx="175" cy="280" r="5" class="marker-core"/>
+              <text x="175" y="305" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Creek Street</text>
             </g>
             <g class="map-marker" data-id="totem-bight" tabindex="0" role="button" aria-label="Totem Bight State Park">
-              <circle cx="280" cy="150" r="12" class="marker-pulse"/>
-              <circle cx="280" cy="150" r="6" fill="#e8a87c"/>
-              <text x="280" y="175" text-anchor="middle" fill="#e8d5b7" font-size="9">Totem Bight</text>
+              <circle cx="280" cy="150" r="14" class="marker-pulse"/>
+              <circle cx="280" cy="150" r="5" class="marker-core"/>
+              <text x="280" y="175" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Totem Bight</text>
             </g>
             <g class="map-marker" data-id="misty-fjords" tabindex="0" role="button" aria-label="Misty Fjords National Monument">
-              <circle cx="100" cy="120" r="12" class="marker-pulse"/>
-              <circle cx="100" cy="120" r="6" fill="#e8a87c"/>
-              <text x="100" y="145" text-anchor="middle" fill="#e8d5b7" font-size="9">Misty Fjords</text>
+              <circle cx="100" cy="120" r="14" class="marker-pulse"/>
+              <circle cx="100" cy="120" r="5" class="marker-core"/>
+              <text x="100" y="145" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Misty Fjords</text>
             </g>
             <g class="map-marker" data-id="saxman" tabindex="0" role="button" aria-label="Saxman Totem Park">
-              <circle cx="220" cy="380" r="12" class="marker-pulse"/>
-              <circle cx="220" cy="380" r="6" fill="#e8a87c"/>
-              <text x="220" y="405" text-anchor="middle" fill="#e8d5b7" font-size="9">Saxman</text>
+              <circle cx="220" cy="380" r="14" class="marker-pulse"/>
+              <circle cx="220" cy="380" r="5" class="marker-core"/>
+              <text x="220" y="405" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Saxman</text>
             </g>
             <g class="map-marker" data-id="downtown" tabindex="0" role="button" aria-label="Downtown Ketchikan">
-              <circle cx="200" cy="260" r="12" class="marker-pulse"/>
-              <circle cx="200" cy="260" r="6" fill="#c45c3a"/>
-              <text x="200" y="245" text-anchor="middle" fill="#e8d5b7" font-size="9">Downtown</text>
+              <circle cx="200" cy="260" r="14" class="marker-pulse"/>
+              <circle cx="200" cy="260" r="5" class="marker-core marker-core-primary"/>
+              <text x="200" y="245" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Downtown</text>
             </g>
             <g class="map-marker" data-id="herring-cove" tabindex="0" role="button" aria-label="Herring Cove">
-              <circle cx="310" cy="320" r="12" class="marker-pulse"/>
-              <circle cx="310" cy="320" r="6" fill="#e8a87c"/>
-              <text x="310" y="345" text-anchor="middle" fill="#e8d5b7" font-size="9">Herring Cove</text>
+              <circle cx="310" cy="320" r="14" class="marker-pulse"/>
+              <circle cx="310" cy="320" r="5" class="marker-core"/>
+              <text x="310" y="345" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Herring Cove</text>
             </g>
           </svg>
         </div>
 
-        <div class="attraction-panel reveal" id="attraction-panel">
+        <div class="attraction-panel glass-panel reveal" id="attraction-panel">
           <div class="attraction-tabs" role="tablist">
             <button class="tab-btn active" role="tab" data-id="creek-street" aria-selected="true">Creek Street</button>
             <button class="tab-btn" role="tab" data-id="totem-bight">Totem Bight</button>
@@ -186,9 +242,7 @@
             <button class="tab-btn" role="tab" data-id="downtown">Downtown</button>
             <button class="tab-btn" role="tab" data-id="herring-cove">Herring Cove</button>
           </div>
-          <div class="attraction-content" id="attraction-content">
-            <!-- Populated by JS -->
-          </div>
+          <div class="attraction-content" id="attraction-content"></div>
         </div>
       </div>
     </div>
@@ -196,40 +250,49 @@
 
   <section class="section culture" id="culture">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Heritage</span>
-        <h2>Living Culture &amp; Totem Traditions</h2>
-        <p class="section-desc">The Tlingit name <em>Kichx̱áan</em> means "spread wings of a prostrate eagle" — a reference to the shape of the creek flowing through town.</p>
+      <div class="section-header reveal">
+        <span class="section-num">03</span>
+        <div>
+          <span class="section-tag">Heritage</span>
+          <h2>Living Culture &amp;<br><span class="gradient-text">Totem Traditions</span></h2>
+          <p class="section-desc"><em>Kichx̱áan</em> — "spread wings of a prostrate eagle," named for the creek's shape through town.</p>
+        </div>
       </div>
 
       <div class="totem-gallery">
-        <div class="totem-card reveal" data-totem="0">
-          <div class="totem-visual totem-1"></div>
+        <article class="totem-card glass-panel reveal" data-totem="0">
+          <div class="totem-visual totem-1">
+            <span class="totem-num">01</span>
+          </div>
           <div class="totem-info">
             <h3>Chief Kyan Pole</h3>
-            <p>Located in Whale Park, this iconic totem is featured in most U.S. passports. Carved to honor Chief Kyan of the Tongass Tlingit.</p>
-            <button class="totem-learn-btn">Learn More</button>
+            <p>Featured in most U.S. passports. Carved to honor Chief Kyan of the Tongass Tlingit.</p>
+            <button class="link-btn totem-learn-btn">Read story <span>&rarr;</span></button>
           </div>
-        </div>
-        <div class="totem-card reveal" data-totem="1">
-          <div class="totem-visual totem-2"></div>
+        </article>
+        <article class="totem-card glass-panel reveal" data-totem="1">
+          <div class="totem-visual totem-2">
+            <span class="totem-num">02</span>
+          </div>
           <div class="totem-info">
             <h3>Totem Heritage Center</h3>
-            <p>Preserves 19th-century poles rescued from abandoned village sites. A living museum of Tlingit and Haida carving traditions.</p>
-            <button class="totem-learn-btn">Learn More</button>
+            <p>Preserves 19th-century poles rescued from abandoned village sites.</p>
+            <button class="link-btn totem-learn-btn">Read story <span>&rarr;</span></button>
           </div>
-        </div>
-        <div class="totem-card reveal" data-totem="2">
-          <div class="totem-visual totem-3"></div>
+        </article>
+        <article class="totem-card glass-panel reveal" data-totem="2">
+          <div class="totem-visual totem-3">
+            <span class="totem-num">03</span>
+          </div>
           <div class="totem-info">
             <h3>Saxman Totem Park</h3>
-            <p>Home to 25 totem poles, many recarvings of older poles created during the Civilian Conservation Corps era.</p>
-            <button class="totem-learn-btn">Learn More</button>
+            <p>25 totem poles — recarvings from the Civilian Conservation Corps era.</p>
+            <button class="link-btn totem-learn-btn">Read story <span>&rarr;</span></button>
           </div>
-        </div>
+        </article>
       </div>
 
-      <div class="timeline reveal" id="timeline">
+      <div class="timeline glass-panel reveal" id="timeline">
         <h3 class="timeline-title">A Walk Through History</h3>
         <div class="timeline-track">
           <div class="timeline-item" data-year="10000">
@@ -287,13 +350,16 @@
 
   <section class="section wildlife" id="wildlife">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Nature</span>
-        <h2>Wildlife of the Rainforest Coast</h2>
-        <p class="section-desc">Select a species to learn where and when you might spot them</p>
+      <div class="section-header reveal">
+        <span class="section-num">04</span>
+        <div>
+          <span class="section-tag">Nature</span>
+          <h2>Wildlife of the<br><span class="gradient-text">Rainforest Coast</span></h2>
+          <p class="section-desc">Select a species to discover where and when to spot them</p>
+        </div>
       </div>
 
-      <div class="wildlife-explorer reveal">
+      <div class="wildlife-explorer glass-panel reveal">
         <div class="wildlife-selector">
           <button class="wildlife-btn active" data-species="bald-eagle">
             <span class="wildlife-emoji">&#x1F985;</span>
@@ -320,16 +386,14 @@
             <span>Orca</span>
           </button>
         </div>
-        <div class="wildlife-detail" id="wildlife-detail">
-          <!-- Populated by JS -->
-        </div>
+        <div class="wildlife-detail" id="wildlife-detail"></div>
       </div>
     </div>
   </section>
 
   <section class="section weather" id="weather">
     <div class="container">
-      <div class="weather-card reveal">
+      <div class="weather-card glass-panel reveal">
         <div class="weather-visual">
           <div class="weather-scene" id="weather-scene">
             <div class="cloud cloud-1"></div>
@@ -338,20 +402,21 @@
           </div>
         </div>
         <div class="weather-info">
-          <h2>Ketchikan Climate</h2>
-          <p class="weather-tagline">"Liquid sunshine" — locals embrace the rain that nourishes the rainforest</p>
+          <span class="section-tag">Climate</span>
+          <h2>Ketchikan<br><span class="gradient-text">Weather</span></h2>
+          <p class="weather-tagline">"Liquid sunshine" — rain nourishes the rainforest</p>
           <div class="weather-stats">
             <div class="weather-stat">
-              <span class="weather-stat-value" id="temp-display">52°F</span>
-              <span class="weather-stat-label">Typical Summer High</span>
+              <span class="weather-stat-value" id="temp-display">62°F</span>
+              <span class="weather-stat-label">Season High</span>
             </div>
             <div class="weather-stat">
               <span class="weather-stat-value">153</span>
-              <span class="weather-stat-label">Rainy Days/Year</span>
+              <span class="weather-stat-label">Rainy Days</span>
             </div>
             <div class="weather-stat">
               <span class="weather-stat-value">37°F</span>
-              <span class="weather-stat-label">Typical Winter Low</span>
+              <span class="weather-stat-label">Winter Low</span>
             </div>
           </div>
           <div class="season-selector">
@@ -368,36 +433,42 @@
 
   <section class="section visit" id="visit">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Plan Your Trip</span>
-        <h2>Visit Ketchikan Gateway Borough</h2>
+      <div class="section-header reveal">
+        <span class="section-num">05</span>
+        <div>
+          <span class="section-tag">Plan Your Trip</span>
+          <h2>Visit Ketchikan<br><span class="gradient-text">Gateway Borough</span></h2>
+        </div>
       </div>
 
       <div class="visit-grid">
-        <div class="visit-card reveal">
-          <div class="visit-icon">&#x2708;</div>
+        <article class="visit-card glass-panel reveal">
+          <div class="visit-num">01</div>
           <h3>Getting Here</h3>
-          <p>Fly into Ketchikan International Airport (KTN) with daily jet service from Seattle, Anchorage, and Juneau. The Alaska Marine Highway ferry system also connects Ketchikan to the Pacific Northwest.</p>
-        </div>
-        <div class="visit-card reveal">
-          <div class="visit-icon">&#x1F6A2;</div>
+          <p>Fly into KTN with daily jet service from Seattle, Anchorage, and Juneau. Alaska Marine Highway ferries connect to the Pacific Northwest.</p>
+        </article>
+        <article class="visit-card glass-panel reveal">
+          <div class="visit-num">02</div>
           <h3>Cruise Port</h3>
-          <p>Four cruise ship berths welcome major cruise lines from May through September. Berth 2 houses the Visitor Information Center — your first stop for maps and tour bookings.</p>
-        </div>
-        <div class="visit-card reveal">
-          <div class="visit-icon">&#x1F3A8;</div>
+          <p>Four cruise berths welcome major lines May–September. Berth 2 houses the Visitor Information Center.</p>
+        </article>
+        <article class="visit-card glass-panel reveal">
+          <div class="visit-num">03</div>
           <h3>Arts &amp; Culture</h3>
-          <p>Explore galleries along Creek Street, catch a performance at the Saxman Community Hall, or visit the Southeast Alaska Discovery Center for interactive exhibits.</p>
-        </div>
-        <div class="visit-card reveal">
-          <div class="visit-icon">&#x1F3A3;</div>
-          <h3>Outdoor Adventures</h3>
-          <p>World-class sport fishing, kayaking through Misty Fjords, zip-lining through the canopy, and hiking trails for every skill level await outdoor enthusiasts.</p>
-        </div>
+          <p>Galleries along Creek Street, performances at Saxman Community Hall, and the Southeast Alaska Discovery Center.</p>
+        </article>
+        <article class="visit-card glass-panel reveal">
+          <div class="visit-num">04</div>
+          <h3>Adventures</h3>
+          <p>Sport fishing, kayaking Misty Fjords, zip-lining the canopy, and trails for every skill level.</p>
+        </article>
       </div>
 
-      <div class="quiz-section reveal" id="quiz-section">
-        <h3>How Well Do You Know Ketchikan?</h3>
+      <div class="quiz-section glass-panel reveal" id="quiz-section">
+        <div class="quiz-header">
+          <span class="section-tag">Challenge</span>
+          <h3>How Well Do You Know Ketchikan?</h3>
+        </div>
         <div class="quiz-container" id="quiz-container">
           <div class="quiz-question" id="quiz-question">
             <p class="quiz-text" id="quiz-text"></p>
@@ -420,14 +491,15 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
+      <div class="footer-top">
         <div class="footer-brand">
+          <span class="logo-mark lg">KG</span>
           <h3>Ketchikan Gateway Borough</h3>
           <p>334 Front Street, Ketchikan, AK 99901</p>
-          <p>Phone: (907) 225-3111</p>
+          <p>(907) 225-3111</p>
         </div>
         <div class="footer-links">
-          <h4>Quick Links</h4>
+          <h4>Resources</h4>
           <ul>
             <li><a href="https://www.kgbak.us/" target="_blank" rel="noopener">Borough Official Site</a></li>
             <li><a href="https://www.visitktn.com/" target="_blank" rel="noopener">Visit Ketchikan</a></li>
@@ -438,22 +510,24 @@
         <div class="footer-newsletter">
           <h4>Stay Connected</h4>
           <form class="newsletter-form" id="newsletter-form">
-            <input type="email" placeholder="Your email address" required aria-label="Email address">
+            <input type="email" placeholder="you@email.com" required aria-label="Email address">
             <button type="submit" class="btn btn-primary">Subscribe</button>
           </form>
           <p class="newsletter-msg hidden" id="newsletter-msg">Thank you for subscribing!</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Ketchikan Gateway Borough. This is an informational community website.</p>
+        <p>&copy; 2026 Ketchikan Gateway Borough</p>
+        <p class="footer-note">Informational community website</p>
       </div>
     </div>
   </footer>
 
   <div class="modal hidden" id="totem-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-backdrop" id="modal-backdrop"></div>
-    <div class="modal-content">
+    <div class="modal-content glass-panel">
       <button class="modal-close" id="modal-close" aria-label="Close dialog">&times;</button>
+      <span class="section-tag">Heritage</span>
       <h3 id="modal-title"></h3>
       <p id="modal-body"></p>
     </div>
