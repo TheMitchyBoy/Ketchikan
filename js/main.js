@@ -1,582 +1,649 @@
-/* Ketchikan Gateway Borough — Interactive Features */
+/* ═══ KETCHIKAN EXPERIMENTAL INTERFACE ═══ */
 
-const attractions = {
+const SIGNALS = {
   'creek-street': {
-    title: 'Creek Street',
-    tag: 'Historic Boardwalk',
-    image: 'linear-gradient(135deg, #042f2e 0%, #134e4a 40%, #2dd4bf 100%)',
-    description: 'A picturesque boardwalk built on stilts over Ketchikan Creek, Creek Street was once the town\'s famed red-light district until 1954. Today it\'s a photographer\'s delight — home to art galleries, gift shops, bookstores, and restaurants perched above the salmon-filled creek.',
-    highlights: [
-      'Dolly\'s House Museum — preserved brothel from the gold rush era',
-      'Salmon viewing from the boardwalk during summer spawning runs',
-      'The "Married Man\'s Trail" — a secret staircase used during prohibition',
-      'Rainbird Records and other unique local shops'
-    ]
+    title: 'Creek Street', tag: 'HISTORIC BOARDWALK',
+    description: 'A boardwalk on stilts over Ketchikan Creek — once the famed red-light district until 1954. Now galleries, shops, and salmon runs beneath.',
+    highlights: ['Dolly\'s House Museum', 'Summer salmon viewing', 'Married Man\'s Trail', 'Rainbird Records']
   },
   'totem-bight': {
-    title: 'Totem Bight State Historical Park',
-    tag: 'State Park',
-    image: 'linear-gradient(135deg, #0c4a6e 0%, #164e63 50%, #22d3ee 100%)',
-    description: 'Set against the backdrop of the Tongass National Forest, this 33-acre park features a collection of restored totem poles and a replica Tlingit clan house. Many poles are recarvings of older poles created during the Civilian Conservation Corps era in the 1930s.',
-    highlights: [
-      '14 totem poles with interpretive signage',
-      'Full-scale Tlingit clan house open for tours',
-      'Rainforest walking trails along the shoreline',
-      'Free admission — open year-round'
-    ]
+    title: 'Totem Bight State Park', tag: 'STATE PARK',
+    description: '33 acres of restored totem poles and a replica Tlingit clan house against the Tongass National Forest backdrop.',
+    highlights: ['14 totem poles', 'Tlingit clan house tours', 'Shoreline rainforest trails', 'Free year-round admission']
   },
   'misty-fjords': {
-    title: 'Misty Fjords National Monument',
-    tag: 'Wilderness',
-    image: 'linear-gradient(135deg, #030712 0%, #0c4a6e 50%, #2dd4bf 100%)',
-    description: 'A breathtaking 3,570-square-mile wilderness of sea cliffs, steep fjords, and rock walls jutting 3,000 feet straight from the ocean. Accessible by floatplane, tour boat, or kayak, Misty Fjords is one of Alaska\'s most spectacular natural wonders.',
-    highlights: [
-      'New Eddystone Rock — a volcanic spire rising from the sea',
-      'Rudyerd Bay — sheer granite cliffs draped in waterfalls',
-      'Wildlife: seals, sea otters, bald eagles, and whales',
-      'Flightseeing tours depart daily from Ketchikan harbor'
-    ]
+    title: 'Misty Fjords National Monument', tag: 'WILDERNESS',
+    description: '3,570 square miles of granite cliffs plunging 3,000 feet into the sea. Accessible by floatplane, boat, or kayak.',
+    highlights: ['New Eddystone Rock', 'Rudyerd Bay waterfalls', 'Seals, otters, eagles, whales', 'Daily flightseeing tours']
   },
   'saxman': {
-    title: 'Saxman Totem Park',
-    tag: 'Native Heritage',
-    image: 'linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #a78bfa 100%)',
-    description: 'Located in the City of Saxman, just south of Ketchikan, this park houses 25 totem poles — one of the largest collections in Alaska. The Saxman community maintains strong Tlingit traditions, with regular carving demonstrations and cultural performances.',
-    highlights: [
-      '25 standing totem poles in a traditional village setting',
-      'Chief Johnson Totem Pole — one of the most photographed in Alaska',
-      'Saxman Community Hall — home to the Cape Fox Dancers',
-      'Carving shed where master carvers work on new poles'
-    ]
+    title: 'Saxman Totem Park', tag: 'NATIVE HERITAGE',
+    description: '25 totem poles in the City of Saxman — one of Alaska\'s largest collections with active carving traditions.',
+    highlights: ['25 standing poles', 'Chief Johnson Totem Pole', 'Cape Fox Dancers', 'Master carver demonstrations']
   },
   'downtown': {
-    title: 'Downtown Ketchikan',
-    tag: 'National Historic Landmark',
-    image: 'linear-gradient(135deg, #042f2e 0%, #0c4a6e 50%, #22d3ee 100%)',
-    description: 'Downtown Ketchikan is a National Historic Landmark District centered on Mission Street and the waterfront. Two large harbors, four cruise ship berths, and a vibrant commercial district make this the heart of the borough.',
-    highlights: [
-      'Chief Kyan Totem Pole in Whale Park (featured in U.S. passports)',
-      'Tongass Historical Museum and Totem Heritage Center',
-      'Berth 2 Visitor Information Center',
-      'Southeast Alaska Discovery Center with interactive exhibits'
-    ]
+    title: 'Downtown Ketchikan', tag: 'NATIONAL LANDMARK',
+    description: 'National Historic Landmark District — two harbors, four cruise berths, the heart of the borough.',
+    highlights: ['Chief Kyan Pole in Whale Park', 'Tongass Historical Museum', 'Berth 2 Visitor Center', 'Southeast Alaska Discovery Center']
   },
   'herring-cove': {
-    title: 'Herring Cove',
-    tag: 'Wildlife Viewing',
-    image: 'linear-gradient(135deg, #064e3b 0%, #134e4a 50%, #2dd4bf 100%)',
-    description: 'A popular wildlife viewing area just a short drive from downtown, Herring Cove offers some of the best bear and salmon viewing in Southeast Alaska. Black bears frequently fish for salmon in the creek during summer months.',
-    highlights: [
-      'Black bear viewing during salmon runs (July–September)',
-      'Accessible via the Herring Cove road or organized tours',
-      'Bald eagles, seals, and occasional orca sightings',
-      'Scenic coastal rainforest setting'
-    ]
+    title: 'Herring Cove', tag: 'WILDLIFE VIEWING',
+    description: 'Prime black bear and salmon viewing just minutes from downtown in a coastal rainforest setting.',
+    highlights: ['Bear viewing Jul–Sep', 'Road and tour access', 'Eagles, seals, orcas', 'Coastal rainforest']
   }
 };
 
-const wildlife = {
-  'bald-eagle': {
-    name: 'Bald Eagle',
-    scientific: 'Haliaeetus leucocephalus',
-    description: 'Ketchikan has one of the highest concentrations of bald eagles in the world. These majestic birds nest in old-growth trees throughout the Tongass National Forest and are a common sight along the waterfront, where they hunt for fish and scavenge from fishing boats.',
-    habitat: 'Waterfront, forests',
-    bestTime: 'Year-round',
-    likelihood: 'Very High'
-  },
-  'humpback-whale': {
-    name: 'Humpback Whale',
-    scientific: 'Megaptera novaeangliae',
-    description: 'Humpback whales migrate through the waters around Ketchikan from May through September. These acrobatic giants can be seen breaching, tail-slapping, and bubble-net feeding in the channels and fjords surrounding Revillagigedo Island.',
-    habitat: 'Open channels, fjords',
-    bestTime: 'May – September',
-    likelihood: 'High (summer)'
-  },
-  'black-bear': {
-    name: 'Black Bear',
-    scientific: 'Ursus americanus',
-    description: 'Southeast Alaska\'s lush rainforest provides ideal habitat for black bears. They are frequently spotted fishing for salmon at Herring Cove, along streams throughout the borough, and occasionally wandering through residential areas in late summer.',
-    habitat: 'Streams, forests',
-    bestTime: 'July – September',
-    likelihood: 'Moderate'
-  },
-  'salmon': {
-    name: 'Pacific Salmon',
-    scientific: 'Oncorhynchus spp.',
-    description: 'All five species of Pacific salmon — king (chinook), silver (coho), red (sockeye), pink (humpy), and chum (dog) — spawn in Ketchikan Creek and surrounding waters. The summer runs draw bears, eagles, and anglers from around the world.',
-    habitat: 'Creeks, streams, ocean',
-    bestTime: 'June – September',
-    likelihood: 'Very High (summer)'
-  },
-  'sea-otter': {
-    name: 'Sea Otter',
-    scientific: 'Enhydra lutris',
-    description: 'Playful sea otters float on their backs in the protected waters around Ketchikan, using rocks to crack open shellfish. Once hunted nearly to extinction for their fur, they have made a remarkable comeback in Southeast Alaska.',
-    habitat: 'Kelp beds, harbors',
-    bestTime: 'Year-round',
-    likelihood: 'Moderate'
-  },
-  'orca': {
-    name: 'Orca (Killer Whale)',
-    scientific: 'Orcinus orca',
-    description: 'Both resident and transient orca pods pass through the waters near Ketchikan. Resident pods feed on salmon, while transient pods hunt marine mammals. Sightings are a thrilling highlight of wildlife cruises and flightseeing tours.',
-    habitat: 'Open water, channels',
-    bestTime: 'May – October',
-    likelihood: 'Low–Moderate'
-  }
-};
-
-const totemDetails = [
-  {
-    title: 'Chief Kyan Pole',
-    body: 'Carved in the early 20th century to honor Chief Kyan of the Tongass Tlingit, this totem pole stands in Whale Park at the center of downtown Ketchikan. Its distinctive design — featuring a crane, a thunderbird, and a bear holding a fish — has become one of the most recognizable images of Alaska, appearing as a background image in most U.S. passports issued since 2007.'
-  },
-  {
-    title: 'Totem Heritage Center',
-    body: 'Established in 1976, the Totem Heritage Center preserves original 19th-century totem poles rescued from abandoned Tlingit and Haida village sites on Tongass Island and Village Island. Unlike the recarvings found at Saxman and Totem Bight, these poles are authentic historical artifacts — some over 150 years old — displayed indoors to protect them from the elements.'
-  },
-  {
-    title: 'Saxman Totem Park',
-    body: 'The totem poles at Saxman represent a remarkable preservation effort. During the 1930s, the Civilian Conservation Corps employed Tlingit and Haida carvers to recreate poles from villages that had been abandoned due to population decline. Master carvers like Nathan Jackson and Israel Shotridge have continued this tradition, making Saxman a living center of Northwest Coast art.'
-  }
+const CONSTELLATION_NODES = [
+  { id: 'misty-fjords', x: 80, y: 100, label: 'MF' },
+  { id: 'totem-bight', x: 380, y: 120, label: 'TB' },
+  { id: 'downtown', x: 250, y: 220, label: 'DT' },
+  { id: 'creek-street', x: 180, y: 300, label: 'CS' },
+  { id: 'herring-cove', x: 400, y: 340, label: 'HC' },
+  { id: 'saxman', x: 220, y: 400, label: 'SX' }
 ];
 
-const seasons = {
-  summer: {
-    temp: '62°F',
-    desc: 'Long daylight hours (up to 17 hours), lush greenery, and peak salmon runs make summer the most popular visiting season. Average rainfall is lower than other seasons, though rain is still common.'
-  },
-  fall: {
-    temp: '48°F',
-    desc: 'Fall brings vibrant colors to the rainforest, fewer crowds, and the tail end of salmon runs. Eagles congregate along streams to feed, and the moody atmosphere is perfect for photography.'
-  },
-  winter: {
-    temp: '37°F',
-    desc: 'Winter in Ketchikan is mild compared to interior Alaska, with temperatures rarely dropping below freezing. The rainforest takes on a mystical quality with moss-covered trees and misty mornings.'
-  },
-  spring: {
-    temp: '45°F',
-    desc: 'Spring awakens the rainforest with wildflowers, migrating birds, and the first salmon returning to local streams. Whale migration begins in May, and the community celebrates the return of longer days.'
-  }
+const SPECIES = {
+  'bald-eagle': { name: 'BALD EAGLE', sci: 'Haliaeetus leucocephalus', id: 'KG-001',
+    desc: 'Highest concentration of bald eagles in the world. Common along waterfront and old-growth forest.',
+    habitat: 'Waterfront', time: 'Year-round', chance: 'Very High', x: 0.7, y: 0.3 },
+  'humpback-whale': { name: 'HUMPBACK WHALE', sci: 'Megaptera novaeangliae', id: 'KG-002',
+    desc: 'Migratory giants breaching and bubble-net feeding in channels May through September.',
+    habitat: 'Channels', time: 'May–Sep', chance: 'High', x: 0.25, y: 0.6 },
+  'black-bear': { name: 'BLACK BEAR', sci: 'Ursus americanus', id: 'KG-003',
+    desc: 'Frequently spotted fishing for salmon at Herring Cove and streams throughout the borough.',
+    habitat: 'Streams', time: 'Jul–Sep', chance: 'Moderate', x: 0.55, y: 0.75 },
+  'salmon': { name: 'PACIFIC SALMON', sci: 'Oncorhynchus spp.', id: 'KG-004',
+    desc: 'All five Pacific species spawn in Ketchikan Creek — king, silver, red, pink, and chum.',
+    habitat: 'Creeks', time: 'Jun–Sep', chance: 'Very High', x: 0.4, y: 0.45 },
+  'sea-otter': { name: 'SEA OTTER', sci: 'Enhydra lutris', id: 'KG-005',
+    desc: 'Playful otters float on their backs in protected harbor waters, cracking shellfish with rocks.',
+    habitat: 'Harbors', time: 'Year-round', chance: 'Moderate', x: 0.8, y: 0.65 },
+  'orca': { name: 'ORCA', sci: 'Orcinus orca', id: 'KG-006',
+    desc: 'Resident and transient pods pass through — salmon feeders and marine mammal hunters.',
+    habitat: 'Open water', time: 'May–Oct', chance: 'Low–Mod', x: 0.15, y: 0.25 }
 };
 
-const seasonScenes = {
-  summer: 'linear-gradient(180deg, #0c4a6e 0%, #042f2e 60%, #134e4a 100%)',
-  fall: 'linear-gradient(180deg, #451a03 0%, #292524 60%, #1c1917 100%)',
-  winter: 'linear-gradient(180deg, #1e293b 0%, #0f172a 60%, #030712 100%)',
-  spring: 'linear-gradient(180deg, #064e3b 0%, #042f2e 60%, #134e4a 100%)'
-};
-
-const quizQuestions = [
-  {
-    question: 'What is Ketchikan known as?',
-    options: ['The Gold Capital of Alaska', 'The Salmon Capital of the World', 'The Oil Capital of the North', 'The Ice Capital of America'],
-    correct: 1
-  },
-  {
-    question: 'Which Native peoples have lived in the Ketchikan area for over 10,000 years?',
-    options: ['Inuit and Yupik', 'Tlingit, Haida, and Tsimshian', 'Aleut and Alutiiq', 'Athabascan and Tlingit'],
-    correct: 1
-  },
-  {
-    question: 'What was Creek Street before 1954?',
-    options: ['A fish cannery row', 'A red-light district', 'A logging camp', 'A military base'],
-    correct: 1
-  },
-  {
-    question: 'How large is Misty Fjords National Monument?',
-    options: ['357 square miles', '1,570 square miles', '3,570 square miles', '5,700 square miles'],
-    correct: 2
-  },
-  {
-    question: 'On which island is Ketchikan located?',
-    options: ['Kodiak Island', 'Revillagigedo Island', 'Baranof Island', 'Prince of Wales Island'],
-    correct: 1
-  }
+const TOTEMS = [
+  { title: 'Chief Kyan Pole', body: 'Carved to honor Chief Kyan of the Tongass Tlingit. Its crane, thunderbird, and bear design appears in most U.S. passports since 2007.' },
+  { title: 'Totem Heritage Center', body: 'Preserves original 19th-century poles rescued from abandoned Tlingit and Haida villages — authentic artifacts over 150 years old.' },
+  { title: 'Saxman Totem Park', body: 'CCC-era recarvings by Tlingit and Haida masters. Nathan Jackson and Israel Shotridge continued this living tradition.' }
 ];
 
-/* Rain Effect */
-let rainActive = true;
-const rainContainer = document.getElementById('rain-container');
+const SEASONS = {
+  summer: { temp: '62°F', cond: 'liquid sunshine', desc: '17 hours of daylight. Peak salmon runs. The island breathes green.' },
+  fall: { temp: '48°F', cond: 'chromatic decay', desc: 'Rainforest colors ignite. Eagles congregate. Fewer crowds, moodier light.' },
+  winter: { temp: '37°F', cond: 'frozen mist', desc: 'Mild by Alaska standards. Moss-covered trees in mystical fog. Rarely below freezing.' },
+  spring: { temp: '45°F', cond: 'awakening pulse', desc: 'Wildflowers, migrating birds, first salmon. Whales return in May.' }
+};
 
-function createRain() {
-  rainContainer.innerHTML = '';
-  if (!rainActive) return;
+const QUIZ = [
+  { q: 'What is Ketchikan known as?', opts: ['Gold Capital of Alaska', 'Salmon Capital of the World', 'Oil Capital of the North', 'Ice Capital of America'], ans: 1 },
+  { q: 'Which peoples have lived here 10,000+ years?', opts: ['Inuit and Yupik', 'Tlingit, Haida, and Tsimshian', 'Aleut and Alutiiq', 'Athabascan and Tlingit'], ans: 1 },
+  { q: 'What was Creek Street before 1954?', opts: ['Fish cannery row', 'A red-light district', 'A logging camp', 'A military base'], ans: 1 },
+  { q: 'How large is Misty Fjords?', opts: ['357 mi²', '1,570 mi²', '3,570 mi²', '5,700 mi²'], ans: 2 },
+  { q: 'Which island is Ketchikan on?', opts: ['Kodiak', 'Revillagigedo', 'Baranof', 'Prince of Wales'], ans: 1 }
+];
 
-  const count = Math.min(window.innerWidth / 8, 150);
+const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
+
+/* ─── Canvas Particle World ─── */
+const canvas = document.getElementById('world-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let mouse = { x: 0, y: 0 };
+let entered = false;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  initParticles();
+}
+
+function initParticles() {
+  particles = [];
+  const count = Math.min(Math.floor(window.innerWidth * window.innerHeight / 8000), 200);
   for (let i = 0; i < count; i++) {
-    const drop = document.createElement('div');
-    drop.className = 'raindrop';
-    drop.style.left = Math.random() * 100 + '%';
-    drop.style.height = Math.random() * 20 + 10 + 'px';
-    drop.style.animationDuration = Math.random() * 0.5 + 0.5 + 's';
-    drop.style.animationDelay = Math.random() * 2 + 's';
-    drop.style.opacity = Math.random() * 0.3 + 0.1;
-    rainContainer.appendChild(drop);
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: Math.random() * 0.5 + 0.2,
+      size: Math.random() * 2 + 0.5,
+      alpha: Math.random() * 0.4 + 0.1
+    });
   }
 }
 
-document.getElementById('rain-toggle').addEventListener('click', function () {
-  rainActive = !rainActive;
-  this.setAttribute('aria-pressed', rainActive);
-  this.querySelector('span').textContent = rainActive ? 'Rain On' : 'Rain Off';
-  createRain();
-});
+function drawWorld() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-createRain();
-window.addEventListener('resize', createRain);
-
-/* Navigation */
-const nav = document.getElementById('nav');
-const navToggle = document.getElementById('nav-toggle');
-const navLinks = document.getElementById('nav-links');
-
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 50);
-});
-
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
-});
-
-const sections = document.querySelectorAll('section[id]');
-const navItems = navLinks.querySelectorAll('a');
-
-const observerNav = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navItems.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
-      });
+  particles.forEach(p => {
+    if (entered) {
+      const dx = mouse.x - p.x;
+      const dy = mouse.y - p.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        p.vx -= (dx / dist) * 0.02;
+        p.vy -= (dy / dist) * 0.02;
+      }
     }
+
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.y > canvas.height) { p.y = 0; p.x = Math.random() * canvas.width; }
+    if (p.x < 0) p.x = canvas.width;
+    if (p.x > canvas.width) p.x = 0;
+
+    p.vx *= 0.99;
+    p.vy = p.vy * 0.99 + 0.15;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(184, 224, 255, ${p.alpha})`;
+    ctx.fill();
   });
-}, { threshold: 0.3 });
 
-sections.forEach(s => observerNav.observe(s));
+  if (entered) {
+    particles.forEach((a, i) => {
+      particles.slice(i + 1).forEach(b => {
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 80) {
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `rgba(200, 255, 0, ${0.08 * (1 - dist / 80)})`;
+          ctx.stroke();
+        }
+      });
+    });
+  }
 
-/* Scroll Progress */
-const scrollProgress = document.getElementById('scroll-progress');
-window.addEventListener('scroll', () => {
-  const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-  scrollProgress.style.width = pct + '%';
+  requestAnimationFrame(drawWorld);
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+drawWorld();
+
+document.addEventListener('mousemove', e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
 }, { passive: true });
 
-/* Cursor Glow */
-const cursorGlow = document.getElementById('cursor-glow');
+/* ─── Custom Cursor ─── */
+const cursor = document.getElementById('cursor');
+const cursorDot = cursor.querySelector('.cursor-dot');
+const cursorRing = cursor.querySelector('.cursor-ring');
+
 if (window.matchMedia('(pointer: fine)').matches) {
   document.addEventListener('mousemove', e => {
-    cursorGlow.style.left = e.clientX + 'px';
-    cursorGlow.style.top = e.clientY + 'px';
+    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
   }, { passive: true });
+
+  document.querySelectorAll('a, button, .const-node, .sonar-blip, .depth-card, .echo-card').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+
+  document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+  document.addEventListener('mouseup', () => document.body.classList.remove('cursor-click'));
 }
 
-/* Animated Counters */
-function animateCounter(el) {
-  const target = parseInt(el.dataset.target, 10);
-  const suffix = el.dataset.suffix || '';
-  const format = el.dataset.format || 'comma';
-  const duration = 2200;
-  const start = performance.now();
+/* ─── Intro Gate ─── */
+const intro = document.getElementById('intro');
+const experience = document.getElementById('experience');
 
-  function update(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 4);
-    const val = Math.floor(eased * target);
-    el.textContent = format === 'raw' ? val + suffix : val.toLocaleString() + suffix;
-    if (progress < 1) requestAnimationFrame(update);
-  }
-
-  requestAnimationFrame(update);
+function enterSite() {
+  if (entered) return;
+  entered = true;
+  intro.classList.add('dismissed');
+  experience.classList.remove('hidden');
+  document.body.classList.add('entered');
+  initScramble();
+  animateCounters();
+  setTimeout(() => intro.remove(), 1500);
 }
 
-const statObserver = new IntersectionObserver(entries => {
+document.getElementById('enter-btn').addEventListener('click', enterSite);
+intro.addEventListener('click', enterSite);
+
+/* ─── Scramble Text ─── */
+function scramble(el) {
+  const target = el.dataset.text || el.textContent;
+  let frame = 0;
+  const maxFrames = 20;
+
+  const interval = setInterval(() => {
+    let result = '';
+    for (let i = 0; i < target.length; i++) {
+      if (target[i] === ' ') { result += ' '; continue; }
+      if (frame / maxFrames > i / target.length) {
+        result += target[i];
+      } else {
+        result += CHARS[Math.floor(Math.random() * CHARS.length)];
+      }
+    }
+    el.textContent = result;
+    frame++;
+    if (frame > maxFrames) {
+      clearInterval(interval);
+      el.textContent = target;
+    }
+  }, 40);
+}
+
+function initScramble() {
+  document.querySelectorAll('.scramble').forEach((el, i) => {
+    setTimeout(() => scramble(el), i * 150);
+  });
+}
+
+const scrambleObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.stat-value').forEach(animateCounter);
-      statObserver.unobserve(entry.target);
+    if (entry.isIntersecting && entered) {
+      scramble(entry.target);
+      scrambleObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.5 });
 
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) statObserver.observe(heroStats);
+document.querySelectorAll('.section-title.scramble').forEach(el => scrambleObserver.observe(el));
 
-/* Reveal on Scroll */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+/* ─── Counters ─── */
+function animateCounters() {
+  document.querySelectorAll('.void-stat-num').forEach(el => {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const fmt = el.dataset.fmt || 'comma';
+    const duration = 2000;
+    const start = performance.now();
+
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 4);
+      const val = Math.floor(eased * target);
+      el.textContent = fmt === 'raw' ? val + suffix : val.toLocaleString() + suffix;
+      if (p < 1) requestAnimationFrame(tick);
     }
+    requestAnimationFrame(tick);
   });
-}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+}
 
-document.querySelectorAll('.reveal').forEach((el, i) => {
-  el.style.transitionDelay = `${(i % 6) * 0.08}s`;
-  revealObserver.observe(el);
-});
+/* ─── Depth Meter & Nav ─── */
+const depthFill = document.getElementById('depth-fill');
+const depthValue = document.getElementById('depth-value');
+const compassNeedle = document.getElementById('compass-needle');
+const orbitLinks = document.querySelectorAll('.orbit-link');
+const panels = document.querySelectorAll('.panel');
 
-/* Timeline Animation */
-const timelineObserver = new IntersectionObserver(entries => {
+window.addEventListener('scroll', () => {
+  const scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+  depthFill.style.height = (scrollPct * 100) + '%';
+  depthValue.textContent = Math.floor(scrollPct * 3000) + 'm';
+  compassNeedle.style.transform = `translate(-50%, -100%) rotate(${scrollPct * 360}deg)`;
+}, { passive: true });
+
+const panelObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.timeline-item').forEach((item, i) => {
-        setTimeout(() => item.classList.add('visible'), i * 200);
+      orbitLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
       });
-      timelineObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.2 });
+}, { threshold: 0.4 });
 
-const timeline = document.getElementById('timeline');
-if (timeline) timelineObserver.observe(timeline);
+panels.forEach(p => panelObserver.observe(p));
 
-/* Attraction Explorer */
-const attractionContent = document.getElementById('attraction-content');
-const tabBtns = document.querySelectorAll('.tab-btn');
-const mapMarkers = document.querySelectorAll('.map-marker');
+document.getElementById('orbit-toggle').addEventListener('click', () => {
+  document.getElementById('orbit-menu').classList.toggle('open');
+});
 
-function showAttraction(id) {
-  const data = attractions[id];
+orbitLinks.forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('orbit-menu').classList.remove('open');
+  });
+});
+
+/* ─── Horizontal Depths Progress ─── */
+const depthsScroll = document.getElementById('depths-scroll');
+const depthsProgressFill = document.getElementById('depths-progress-fill');
+
+depthsScroll?.addEventListener('scroll', () => {
+  const max = depthsScroll.scrollWidth - depthsScroll.clientWidth;
+  const pct = max > 0 ? depthsScroll.scrollLeft / max : 0;
+  depthsProgressFill.style.width = (pct * 100) + '%';
+}, { passive: true });
+
+/* ─── Constellation Map ─── */
+const constLines = document.getElementById('const-lines');
+const constNodes = document.getElementById('const-nodes');
+const signalDetail = document.getElementById('signal-detail');
+
+const connections = [[0,1],[1,2],[2,3],[2,4],[3,5],[4,5],[0,2]];
+
+connections.forEach(([a, b]) => {
+  const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  line.setAttribute('x1', CONSTELLATION_NODES[a].x);
+  line.setAttribute('y1', CONSTELLATION_NODES[a].y);
+  line.setAttribute('x2', CONSTELLATION_NODES[b].x);
+  line.setAttribute('y2', CONSTELLATION_NODES[b].y);
+  line.classList.add('const-line');
+  line.dataset.a = a;
+  line.dataset.b = b;
+  constLines.appendChild(line);
+});
+
+CONSTELLATION_NODES.forEach((node, i) => {
+  const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  g.classList.add('const-node');
+  g.dataset.id = node.id;
+  g.dataset.index = i;
+  g.innerHTML = `
+    <circle class="core" cx="${node.x}" cy="${node.y}" r="12"/>
+    <text x="${node.x}" y="${node.y + 24}" text-anchor="middle">${node.label}</text>
+  `;
+  g.addEventListener('click', () => showSignal(node.id, i));
+  constNodes.appendChild(g);
+});
+
+function showSignal(id, index) {
+  const data = SIGNALS[id];
   if (!data) return;
 
-  attractionContent.style.opacity = '0';
+  signalDetail.style.opacity = '0';
   setTimeout(() => {
-    attractionContent.innerHTML = `
-      <div class="attraction-image" style="background: ${data.image}"></div>
-      <span class="attraction-tag">${data.tag}</span>
-      <h3>${data.title}</h3>
-      <p>${data.description}</p>
-      <ul class="attraction-highlights">
-        ${data.highlights.map(h => `<li>${h}</li>`).join('')}
-      </ul>
-    `;
-    attractionContent.style.opacity = '1';
+    document.getElementById('signal-tag').textContent = data.tag;
+    document.getElementById('signal-title').textContent = data.title;
+    document.getElementById('signal-body').textContent = data.description;
+    document.getElementById('signal-highlights').innerHTML =
+      data.highlights.map(h => `<li>${h}</li>`).join('');
+    signalDetail.style.opacity = '1';
   }, 200);
 
-  tabBtns.forEach(btn => {
-    const isActive = btn.dataset.id === id;
-    btn.classList.toggle('active', isActive);
-    btn.setAttribute('aria-selected', isActive);
+  document.querySelectorAll('.const-node').forEach(n => {
+    n.classList.toggle('active', n.dataset.id === id);
   });
 
-  mapMarkers.forEach(marker => {
-    marker.classList.toggle('active', marker.dataset.id === id);
+  document.querySelectorAll('.const-line').forEach(line => {
+    const a = parseInt(line.dataset.a);
+    const b = parseInt(line.dataset.b);
+    line.classList.toggle('active', a === index || b === index);
   });
 }
 
-tabBtns.forEach(btn => {
-  btn.addEventListener('click', () => showAttraction(btn.dataset.id));
+showSignal('downtown', 2);
+signalDetail.style.transition = 'opacity 0.3s';
+
+/* ─── Sonar ─── */
+const sonarCanvas = document.getElementById('sonar-canvas');
+const sonarCtx = sonarCanvas.getContext('2d');
+const sonarBlips = document.getElementById('sonar-blips');
+let sonarAngle = 0;
+let activeSpecies = null;
+
+Object.entries(SPECIES).forEach(([key, sp]) => {
+  const blip = document.createElement('button');
+  blip.className = 'sonar-blip';
+  blip.style.left = (sp.x * 100) + '%';
+  blip.style.top = (sp.y * 100) + '%';
+  blip.dataset.species = key;
+  blip.setAttribute('aria-label', sp.name);
+  blip.addEventListener('click', () => showSpecies(key));
+  sonarBlips.appendChild(blip);
+
+  const btn = document.createElement('button');
+  btn.className = 'sonar-key';
+  btn.textContent = sp.name.split(' ')[0];
+  btn.addEventListener('click', () => showSpecies(key));
+  document.getElementById('sonar-keys').appendChild(btn);
 });
 
-mapMarkers.forEach(marker => {
-  marker.addEventListener('click', () => showAttraction(marker.dataset.id));
-  marker.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      showAttraction(marker.dataset.id);
+function showSpecies(key) {
+  activeSpecies = key;
+  const sp = SPECIES[key];
+
+  document.getElementById('readout-status').textContent = 'IDENTIFIED';
+  document.getElementById('readout-id').textContent = sp.id;
+  document.getElementById('readout-name').textContent = sp.name;
+  document.getElementById('readout-sci').textContent = sp.sci;
+  document.getElementById('readout-desc').textContent = sp.desc;
+  document.getElementById('readout-meta').innerHTML = `
+    <div><span>HABITAT</span><span>${sp.habitat}</span></div>
+    <div><span>SEASON</span><span>${sp.time}</span></div>
+    <div><span>SIGNAL</span><span>${sp.chance}</span></div>
+  `;
+
+  document.querySelectorAll('.sonar-blip').forEach(b => {
+    b.classList.toggle('active', b.dataset.species === key);
+  });
+  document.querySelectorAll('.sonar-key').forEach((b, i) => {
+    b.classList.toggle('active', Object.keys(SPECIES)[i] === key);
+  });
+}
+
+function drawSonar() {
+  const w = sonarCanvas.width;
+  const h = sonarCanvas.height;
+  const cx = w / 2;
+  const cy = h / 2;
+  const r = w / 2 - 4;
+
+  sonarCtx.clearRect(0, 0, w, h);
+
+  for (let i = 1; i <= 4; i++) {
+    sonarCtx.beginPath();
+    sonarCtx.arc(cx, cy, (r / 4) * i, 0, Math.PI * 2);
+    sonarCtx.strokeStyle = 'rgba(200, 255, 0, 0.08)';
+    sonarCtx.stroke();
+  }
+
+  sonarCtx.beginPath();
+  sonarCtx.moveTo(cx, cy);
+  sonarCtx.lineTo(cx + Math.cos(sonarAngle) * r, cy + Math.sin(sonarAngle) * r);
+  sonarCtx.strokeStyle = 'rgba(0, 240, 255, 0.4)';
+  sonarCtx.lineWidth = 1;
+  sonarCtx.stroke();
+
+  const gradient = sonarCtx.createConicGradient(sonarAngle - 0.4, cx, cy);
+  gradient.addColorStop(0, 'rgba(0, 240, 255, 0)');
+  gradient.addColorStop(0.5, 'rgba(0, 240, 255, 0.06)');
+  gradient.addColorStop(1, 'rgba(0, 240, 255, 0)');
+  sonarCtx.beginPath();
+  sonarCtx.moveTo(cx, cy);
+  sonarCtx.arc(cx, cy, r, sonarAngle - 0.5, sonarAngle);
+  sonarCtx.closePath();
+  sonarCtx.fillStyle = gradient;
+  sonarCtx.fill();
+
+  Object.entries(SPECIES).forEach(([key, sp]) => {
+    const bx = cx + (sp.x - 0.5) * r * 1.6;
+    const by = cy + (sp.y - 0.5) * r * 1.6;
+    const angleToBlip = Math.atan2(by - cy, bx - cx);
+    const angleDiff = Math.abs(angleToBlip - sonarAngle);
+    if (angleDiff < 0.15 || angleDiff > Math.PI * 2 - 0.15) {
+      sonarCtx.beginPath();
+      sonarCtx.arc(bx, by, 4, 0, Math.PI * 2);
+      sonarCtx.fillStyle = activeSpecies === key ? '#c8ff00' : 'rgba(200, 255, 0, 0.6)';
+      sonarCtx.fill();
     }
   });
-});
 
-showAttraction('creek-street');
-attractionContent.style.transition = 'opacity 0.3s ease';
-
-/* Wildlife Explorer */
-const wildlifeDetail = document.getElementById('wildlife-detail');
-const wildlifeBtns = document.querySelectorAll('.wildlife-btn');
-
-function showWildlife(species) {
-  const data = wildlife[species];
-  if (!data) return;
-
-  wildlifeDetail.style.opacity = '0';
-  setTimeout(() => {
-    wildlifeDetail.innerHTML = `
-      <h3>${data.name}</h3>
-      <p class="wildlife-scientific">${data.scientific}</p>
-      <p>${data.description}</p>
-      <div class="wildlife-meta">
-        <div class="wildlife-meta-item">
-          <span>Habitat</span>
-          <span>${data.habitat}</span>
-        </div>
-        <div class="wildlife-meta-item">
-          <span>Best Time</span>
-          <span>${data.bestTime}</span>
-        </div>
-        <div class="wildlife-meta-item">
-          <span>Likelihood</span>
-          <span>${data.likelihood}</span>
-        </div>
-      </div>
-    `;
-    wildlifeDetail.style.opacity = '1';
-  }, 200);
-
-  wildlifeBtns.forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.species === species);
-  });
+  sonarAngle += 0.02;
+  requestAnimationFrame(drawSonar);
 }
 
-wildlifeBtns.forEach(btn => {
-  btn.addEventListener('click', () => showWildlife(btn.dataset.species));
-});
+drawSonar();
+showSpecies('bald-eagle');
 
-showWildlife('bald-eagle');
-wildlifeDetail.style.transition = 'opacity 0.3s ease';
+/* ─── Atmos Canvas ─── */
+const atmosCanvas = document.getElementById('atmos-canvas');
+const atmosCtx = atmosCanvas.getContext('2d');
+let atmosSeason = 'summer';
+let atmosParticles = [];
 
-/* Season Selector */
-const seasonBtns = document.querySelectorAll('.season-btn');
-const seasonDesc = document.getElementById('season-desc');
-const tempDisplay = document.getElementById('temp-display');
-const weatherScene = document.getElementById('weather-scene');
+const SEASON_COLORS = {
+  summer: { sky: ['#0c1929', '#134e4a'], rain: 'rgba(0, 240, 255, 0.3)' },
+  fall: { sky: ['#1a0f0a', '#451a03'], rain: 'rgba(251, 113, 133, 0.3)' },
+  winter: { sky: ['#0a0a12', '#1e293b'], rain: 'rgba(184, 224, 255, 0.4)' },
+  spring: { sky: ['#0a1a14', '#064e3b'], rain: 'rgba(200, 255, 0, 0.25)' }
+};
 
-seasonBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const season = btn.dataset.season;
-    seasonBtns.forEach(b => b.classList.toggle('active', b === btn));
-    seasonDesc.textContent = seasons[season].desc;
-    tempDisplay.textContent = seasons[season].temp;
-    weatherScene.style.background = seasonScenes[season];
-  });
-});
-
-/* Totem Modal */
-const totemModal = document.getElementById('totem-modal');
-const modalTitle = document.getElementById('modal-title');
-const modalBody = document.getElementById('modal-body');
-
-document.querySelectorAll('.totem-learn-btn').forEach((btn, i) => {
-  btn.addEventListener('click', () => {
-    modalTitle.textContent = totemDetails[i].title;
-    modalBody.textContent = totemDetails[i].body;
-    totemModal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  });
-});
-
-function closeModal() {
-  totemModal.classList.add('hidden');
-  document.body.style.overflow = '';
+function initAtmosParticles() {
+  atmosParticles = [];
+  for (let i = 0; i < 80; i++) {
+    atmosParticles.push({
+      x: Math.random() * atmosCanvas.width,
+      y: Math.random() * atmosCanvas.height,
+      speed: Math.random() * 3 + 2,
+      len: Math.random() * 15 + 5
+    });
+  }
 }
 
-document.getElementById('modal-close').addEventListener('click', closeModal);
-document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+initAtmosParticles();
+
+function drawAtmos() {
+  const w = atmosCanvas.width;
+  const h = atmosCanvas.height;
+  const colors = SEASON_COLORS[atmosSeason];
+
+  const grad = atmosCtx.createLinearGradient(0, 0, 0, h);
+  grad.addColorStop(0, colors.sky[0]);
+  grad.addColorStop(1, colors.sky[1]);
+  atmosCtx.fillStyle = grad;
+  atmosCtx.fillRect(0, 0, w, h);
+
+  atmosParticles.forEach(p => {
+    atmosCtx.beginPath();
+    atmosCtx.moveTo(p.x, p.y);
+    atmosCtx.lineTo(p.x, p.y + p.len);
+    atmosCtx.strokeStyle = colors.rain;
+    atmosCtx.lineWidth = 1;
+    atmosCtx.stroke();
+
+    p.y += p.speed;
+    if (p.y > h) { p.y = -p.len; p.x = Math.random() * w; }
+  });
+
+  requestAnimationFrame(drawAtmos);
+}
+
+drawAtmos();
+
+document.querySelectorAll('.dial-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    atmosSeason = btn.dataset.season;
+    document.querySelectorAll('.dial-btn').forEach(b => b.classList.toggle('active', b === btn));
+    const s = SEASONS[atmosSeason];
+    document.getElementById('atmos-temp').textContent = s.temp;
+    document.getElementById('atmos-condition').textContent = s.cond;
+    document.getElementById('atmos-season-desc').textContent = s.desc;
+    initAtmosParticles();
+  });
+});
+
+/* ─── Echo Wave ─── */
+const wavePath = document.getElementById('wave-path');
+let waveOffset = 0;
+
+function animateWave() {
+  if (!wavePath) return;
+  let d = 'M0,40 ';
+  for (let x = 0; x <= 1200; x += 20) {
+    const y = 40 + Math.sin((x + waveOffset) * 0.02) * 15 + Math.sin((x + waveOffset) * 0.01) * 10;
+    d += `L${x},${y} `;
+  }
+  wavePath.setAttribute('d', d);
+  waveOffset += 2;
+  requestAnimationFrame(animateWave);
+}
+
+animateWave();
+
+/* ─── Totem Modal ─── */
+const modal = document.getElementById('modal');
+
+document.querySelectorAll('.echo-expand').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const t = TOTEMS[parseInt(btn.dataset.totem, 10)];
+    document.getElementById('modal-title').textContent = t.title;
+    document.getElementById('modal-body').textContent = t.body;
+    modal.classList.remove('hidden');
+  });
+});
+
+function closeModal() { modal.classList.add('hidden'); }
+document.getElementById('modal-x').addEventListener('click', closeModal);
+document.getElementById('modal-bg').addEventListener('click', closeModal);
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && !totemModal.classList.contains('hidden')) closeModal();
+  if (e.key === 'Escape') closeModal();
 });
 
-/* Quiz */
-let quizIndex = 0;
-let quizScore = 0;
-let quizAnswered = false;
+/* ─── Terminal Quiz ─── */
+let qIdx = 0, qScore = 0, qLocked = false;
 
-const quizText = document.getElementById('quiz-text');
-const quizOptions = document.getElementById('quiz-options');
-const quizCounter = document.getElementById('quiz-counter');
-const quizBarFill = document.getElementById('quiz-bar-fill');
-const quizQuestion = document.getElementById('quiz-question');
-const quizResult = document.getElementById('quiz-result');
-const quizScoreEl = document.getElementById('quiz-score');
-const quizMessage = document.getElementById('quiz-message');
-
-function showQuestion() {
-  quizAnswered = false;
-  const q = quizQuestions[quizIndex];
-  quizText.textContent = q.question;
-  quizCounter.textContent = `Question ${quizIndex + 1} of ${quizQuestions.length}`;
-  quizBarFill.style.width = ((quizIndex + 1) / quizQuestions.length * 100) + '%';
-
-  quizOptions.innerHTML = q.options.map((opt, i) =>
-    `<button class="quiz-option" data-index="${i}">${opt}</button>`
+function showQuizQ() {
+  qLocked = false;
+  const q = QUIZ[qIdx];
+  document.getElementById('terminal-question').textContent = `[${qIdx + 1}/${QUIZ.length}] ${q.q}`;
+  document.getElementById('terminal-options').innerHTML = q.opts.map((o, i) =>
+    `<button class="terminal-opt" data-i="${i}">${o}</button>`
   ).join('');
-
-  quizOptions.querySelectorAll('.quiz-option').forEach(btn => {
-    btn.addEventListener('click', () => handleAnswer(parseInt(btn.dataset.index, 10)));
+  document.getElementById('terminal-options').querySelectorAll('.terminal-opt').forEach(btn => {
+    btn.addEventListener('click', () => answerQuiz(parseInt(btn.dataset.i, 10)));
   });
 }
 
-function handleAnswer(selected) {
-  if (quizAnswered) return;
-  quizAnswered = true;
-
-  const q = quizQuestions[quizIndex];
-  const buttons = quizOptions.querySelectorAll('.quiz-option');
-  buttons.forEach(btn => btn.classList.add('disabled'));
-
-  if (selected === q.correct) {
-    buttons[selected].classList.add('correct');
-    quizScore++;
-  } else {
-    buttons[selected].classList.add('incorrect');
-    buttons[q.correct].classList.add('correct');
-  }
+function answerQuiz(sel) {
+  if (qLocked) return;
+  qLocked = true;
+  const q = QUIZ[qIdx];
+  const btns = document.querySelectorAll('.terminal-opt');
+  btns.forEach(b => b.classList.add('disabled'));
+  if (sel === q.ans) { btns[sel].classList.add('correct'); qScore++; }
+  else { btns[sel].classList.add('wrong'); btns[q.ans].classList.add('correct'); }
 
   setTimeout(() => {
-    quizIndex++;
-    if (quizIndex < quizQuestions.length) {
-      showQuestion();
-    } else {
-      showQuizResult();
+    qIdx++;
+    if (qIdx < QUIZ.length) showQuizQ();
+    else {
+      document.getElementById('terminal-question').textContent = '';
+      document.getElementById('terminal-options').innerHTML = '';
+      document.getElementById('terminal-result').classList.remove('hidden');
+      document.getElementById('terminal-score').textContent = `${qScore}/${QUIZ.length}`;
+      const pct = qScore / QUIZ.length;
+      document.getElementById('terminal-msg').textContent = pct === 1
+        ? 'TRANSMISSION COMPLETE. You are a Ketchikan oracle.'
+        : pct >= 0.6 ? 'SIGNAL STRONG. Borough knowledge confirmed.'
+        : 'SIGNAL WEAK. Re-explore the depths.';
     }
-  }, 1500);
+  }, 1200);
 }
 
-function showQuizResult() {
-  quizQuestion.classList.add('hidden');
-  quizResult.classList.remove('hidden');
-  quizScoreEl.textContent = `${quizScore} / ${quizQuestions.length}`;
-  const pct = quizScore / quizQuestions.length;
-  if (pct === 1) {
-    quizMessage.textContent = 'Perfect! You\'re a true Ketchikan expert!';
-  } else if (pct >= 0.6) {
-    quizMessage.textContent = 'Great job! You know your way around the Gateway Borough.';
-  } else {
-    quizMessage.textContent = 'Keep exploring — there\'s always more to discover in Ketchikan!';
-  }
-}
-
-document.getElementById('quiz-restart').addEventListener('click', () => {
-  quizIndex = 0;
-  quizScore = 0;
-  quizQuestion.classList.remove('hidden');
-  quizResult.classList.add('hidden');
-  showQuestion();
+document.getElementById('terminal-restart').addEventListener('click', () => {
+  qIdx = 0; qScore = 0;
+  document.getElementById('terminal-result').classList.add('hidden');
+  showQuizQ();
 });
 
-showQuestion();
-
-/* Newsletter */
-document.getElementById('newsletter-form').addEventListener('submit', e => {
+/* ─── Transmit Form ─── */
+document.getElementById('transmit-form').addEventListener('submit', e => {
   e.preventDefault();
-  const msg = document.getElementById('newsletter-msg');
-  msg.classList.remove('hidden');
+  showToast('TRANSMISSION RECEIVED');
   e.target.reset();
-  showToast('Welcome to the Ketchikan community!');
 });
 
-/* Toast */
-function showToast(message) {
+function showToast(msg) {
   const toast = document.getElementById('toast');
-  toast.textContent = message;
+  toast.textContent = msg;
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
-/* Card Tilt Effect */
-document.querySelectorAll('[data-tilt]').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`;
-  });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
+document.getElementById('enter-btn').addEventListener('click', () => {
+  setTimeout(showQuizQ, 800);
 });

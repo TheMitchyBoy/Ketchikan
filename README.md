@@ -1,36 +1,33 @@
-# Ketchikan Gateway Borough Website
+# KETCHIKAN — Experimental Gateway Interface
 
-A dynamic, interactive website celebrating the Ketchikan Gateway Borough — Alaska's First City and the Salmon Capital of the World.
+An experimental, avant-garde web experience for the Ketchikan Gateway Borough. Not a brochure — an expedition.
+
+## Concept
+
+The site treats exploration of Alaska's First City like a deep-sea transmission: you cross through mist to descend through layers of rainforest, signal, memory, and atmosphere.
 
 ## Features
 
-- **Animated rain effect** — Toggle the signature Ketchikan "liquid sunshine"
-- **Interactive borough map** — Click landmarks to explore attractions
-- **Wildlife explorer** — Learn about local species and where to spot them
-- **Historical timeline** — Scroll through 10,000+ years of heritage
-- **Climate season selector** — Discover what each season offers
-- **Ketchikan trivia quiz** — Test your borough knowledge
-- **Totem pole culture section** — Deep dives into Native carving traditions
-- **Responsive design** — Works on desktop, tablet, and mobile
+- **Mist gate intro** — Cinematic entry sequence before the experience loads
+- **Canvas particle field** — Interactive mist particles that repel from your cursor
+- **Custom cursor** — Blend-mode dot and ring (desktop)
+- **Depth meter** — Scroll-driven descent indicator with rotating compass nav
+- **Four horizontal depth layers** — Canopy, Surface, Tide Line, Abyss (scroll-snap)
+- **Constellation map** — SVG node network for borough landmarks
+- **Sonar wildlife scanner** — Rotating radar canvas with species blips
+- **Memory stream** — Horizontal timeline with animated waveform
+- **Climate engine** — Generative rain canvas per season
+- **Terminal quiz** — CLI-style borough knowledge test
+- **Scramble text** — Decoding animation on headings
 
-## Getting Started
-
-Open `index.html` in a browser, or serve locally:
+## Run locally
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Then visit [http://localhost:8080](http://localhost:8080).
+Open [http://localhost:8080](http://localhost:8080) and click to cross the mist.
 
-## Structure
+## Stack
 
-```
-├── index.html          # Main page
-├── css/styles.css      # Styles and animations
-└── js/main.js          # Interactive features
-```
-
-## About Ketchikan Gateway Borough
-
-The Ketchikan Gateway Borough encompasses Revillagigedo Island in Southeast Alaska, including the City of Ketchikan and the City of Saxman. Known for totem poles, Misty Fjords National Monument, Creek Street, and world-class salmon fishing, the borough welcomes over a million visitors annually.
+Vanilla HTML, CSS, and JavaScript — no build step, no dependencies.
