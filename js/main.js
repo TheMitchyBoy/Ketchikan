@@ -140,7 +140,7 @@ function drawWorld() {
 
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(184, 224, 255, ${p.alpha})`;
+    ctx.fillStyle = `rgba(168, 218, 220, ${p.alpha * 0.9})`;
     ctx.fill();
   });
 
@@ -154,7 +154,7 @@ function drawWorld() {
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = `rgba(200, 255, 0, ${0.08 * (1 - dist / 80)})`;
+          ctx.strokeStyle = `rgba(82, 183, 136, ${0.1 * (1 - dist / 80)})`;
           ctx.stroke();
         }
       });
@@ -437,21 +437,21 @@ function drawSonar() {
   for (let i = 1; i <= 4; i++) {
     sonarCtx.beginPath();
     sonarCtx.arc(cx, cy, (r / 4) * i, 0, Math.PI * 2);
-    sonarCtx.strokeStyle = 'rgba(200, 255, 0, 0.08)';
+    sonarCtx.strokeStyle = 'rgba(72, 202, 228, 0.1)';
     sonarCtx.stroke();
   }
 
   sonarCtx.beginPath();
   sonarCtx.moveTo(cx, cy);
   sonarCtx.lineTo(cx + Math.cos(sonarAngle) * r, cy + Math.sin(sonarAngle) * r);
-  sonarCtx.strokeStyle = 'rgba(0, 240, 255, 0.4)';
+  sonarCtx.strokeStyle = 'rgba(72, 202, 228, 0.45)';
   sonarCtx.lineWidth = 1;
   sonarCtx.stroke();
 
   const gradient = sonarCtx.createConicGradient(sonarAngle - 0.4, cx, cy);
-  gradient.addColorStop(0, 'rgba(0, 240, 255, 0)');
-  gradient.addColorStop(0.5, 'rgba(0, 240, 255, 0.06)');
-  gradient.addColorStop(1, 'rgba(0, 240, 255, 0)');
+  gradient.addColorStop(0, 'rgba(72, 202, 228, 0)');
+  gradient.addColorStop(0.5, 'rgba(72, 202, 228, 0.08)');
+  gradient.addColorStop(1, 'rgba(72, 202, 228, 0)');
   sonarCtx.beginPath();
   sonarCtx.moveTo(cx, cy);
   sonarCtx.arc(cx, cy, r, sonarAngle - 0.5, sonarAngle);
@@ -467,7 +467,7 @@ function drawSonar() {
     if (angleDiff < 0.15 || angleDiff > Math.PI * 2 - 0.15) {
       sonarCtx.beginPath();
       sonarCtx.arc(bx, by, 4, 0, Math.PI * 2);
-      sonarCtx.fillStyle = activeSpecies === key ? '#c8ff00' : 'rgba(200, 255, 0, 0.6)';
+      sonarCtx.fillStyle = activeSpecies === key ? '#52b788' : 'rgba(72, 202, 228, 0.65)';
       sonarCtx.fill();
     }
   });
@@ -486,10 +486,10 @@ let atmosSeason = 'summer';
 let atmosParticles = [];
 
 const SEASON_COLORS = {
-  summer: { sky: ['#0c1929', '#134e4a'], rain: 'rgba(0, 240, 255, 0.3)' },
-  fall: { sky: ['#1a0f0a', '#451a03'], rain: 'rgba(251, 113, 133, 0.3)' },
-  winter: { sky: ['#0a0a12', '#1e293b'], rain: 'rgba(184, 224, 255, 0.4)' },
-  spring: { sky: ['#0a1a14', '#064e3b'], rain: 'rgba(200, 255, 0, 0.25)' }
+  summer: { sky: ['#0d3b4c', '#1b4332'], rain: 'rgba(72, 202, 228, 0.35)' },
+  fall: { sky: ['#1a2e1a', '#4a3728'], rain: 'rgba(166, 138, 100, 0.35)' },
+  winter: { sky: ['#0a1f2a', '#0d3b4c'], rain: 'rgba(202, 240, 248, 0.4)' },
+  spring: { sky: ['#0a2820', '#1b4332'], rain: 'rgba(116, 198, 157, 0.3)' }
 };
 
 function initAtmosParticles() {
